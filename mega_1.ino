@@ -1,6 +1,6 @@
 /*Project: IL2P*/
 /*Device: Elegoo_Mega1*/
-/*Author: Liam*/
+/*Author: Liam Clark */
 /*Version: 1.1*/
 
 /*Libraries*/
