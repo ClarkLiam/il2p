@@ -31,38 +31,38 @@
     int vf6 = 0;
     int vf6last = 0;
     int vf6send = 0;
-    int vf7 = 0;
-    int vf7last = 0;
-    int vf7send = 0;
-    int vf8 = 0;
-    int vf8last = 0;
-    int vf8send = 0;
-    int vf9 = 0;
-    int vf9last = 0;
-    int vf9send = 0;
-    int vf10 = 0;
-    int vf10last = 0;
-    int vf10send = 0;
-    int vf11 = 0;
-    int vf11last = 0;
-    int vf11send = 0;
-    int vf12 = 0;
-    int vf12last = 0;
-    int vf12send = 0;
+    int vf13 = 0;
+    int vf13last = 0;
+    int vf13send = 0;
+    int vf14 = 0;
+    int vf14last = 0;
+    int vf14send = 0;
+    int vf15 = 0;
+    int vf15last = 0;
+    int vf15send = 0;
+    int vf16 = 0;
+    int vf16last = 0;
+    int vf16send = 0;
+    int vf17 = 0;
+    int vf17last = 0;
+    int vf17send = 0;
+    int vf18 = 0;
+    int vf18last = 0;
+    int vf18send = 0;
 
 
     int sb1 = 0;            //StateButtonNum
-    int b1 = 12;
+    int b1 = 14;
     int sb2 = 0;
-    int b2 = 13;
+    int b2 = 15;
     int sb3 = 0;
-    int b3 = 14;
+    int b3 = 16;
     int sb4 = 0;
-    int b4 = 15;
+    int b4 = 17;
     int sb5 = 0;
-    int b5 = 16;
+    int b5 = 18;
     int sb6 = 0;
-    int b6 = 17;
+    int b6 = 19;
 
     
 
@@ -76,8 +76,8 @@ void setup()
     Serial.begin(9600);
 
     Wire.begin(NODE_ADDRESS);
-    Wire.onReceive(receiveEvent); // erstelle ein Empfangen-Ereignis
-    Wire.onRequest(requestEvent); // erstelle ein Anfrage-Ereignis
+//    Wire.onReceive(receiveEvent); // erstelle ein Empfangen-Ereignis
+//    Wire.onRequest(requestEvent); // erstelle ein Anfrage-Ereignis
 
 
     SoftPWMSet(0, 0);       //FaderLED1
@@ -93,18 +93,25 @@ void setup()
     SoftPWMSet(10, 0);      //FaderLED11
     SoftPWMSet(11, 0);      //FaderLED12
 
-    pinMode
+    
   
 
 
   //Interrupts
-    attachInterrupt(digitalPinToInterrupt(b1), b1, RISING);
-    attachInterrupt(digitalPinToInterrupt(b2), b2, RISING);
-    attachInterrupt(digitalPinToInterrupt(b3), b3, RISING);
-    attachInterrupt(digitalPinToInterrupt(b4), b4, RISING);
-    attachInterrupt(digitalPinToInterrupt(b5), b5, RISING);
-    attachInterrupt(digitalPinToInterrupt(b6), b6, RISING);
+    attachInterrupt(digitalPinToInterrupt(14), bA, LOW);
+    //attachInterrupt(digitalPinToInterrupt(15), bB, CHANGE);
+    //attachInterrupt(digitalPinToInterrupt(16), bC, RISING);
+    //attachInterrupt(digitalPinToInterrupt(17), bD, CHANGE);
+    //attachInterrupt(digitalPinToInterrupt(18), bE, CHANGE);
+    //attachInterrupt(digitalPinToInterrupt(19), bF, CHANGE);
     
+pinMode(14, INPUT_PULLUP);
+pinMode(15, INPUT_PULLUP);
+pinMode(16, INPUT_PULLUP);
+pinMode(17, INPUT_PULLUP);
+pinMode(18, INPUT_PULLUP);
+pinMode(19, INPUT_PULLUP);
+
 }
 
 void loop()
@@ -117,12 +124,12 @@ void loop()
         vf4 = analogRead(A3);
         vf5 = analogRead(A4);
         vf6 = analogRead(A5);
-        vf7 = analogRead(A6);
-        vf8 = analogRead(A7);
-        vf9 = analogRead(A8);
-        vf10 = analogRead(A9);
-        vf11 = analogRead(A10);
-        vf12 = analogRead(A11);
+        vf13 = analogRead(A6);
+        vf14 = analogRead(A7);
+        vf15 = analogRead(A8);
+        vf16 = analogRead(A9);
+        vf17 = analogRead(A10);
+        vf18 = analogRead(A11);
 
     //Check Fader with last value
         if (vf1 != vf1last)
@@ -155,41 +162,48 @@ void loop()
             vf6last = vf6;
             vf6send = map(vf6, 0, 1023, 0, 127);
         }
-        if (vf7 != vf7last)
+        if (vf13 != vf13last)
         {
-            vf7last = vf7;
-            vf7send = map(vf7, 0, 1023, 0, 127);
+            vf13last = vf13;
+            vf13send = map(vf13, 0, 1023, 0, 127);
         }
-        if (vf8 != vf8last)
+        if (vf14 != vf14last)
         {
-            vf8last = vf8;
-            vf8send = map(vf8, 0, 1023, 0, 127);
+            vf14last = vf14;
+            vf14send = map(vf14, 0, 1023, 0, 127);
         }
-        if (vf9 != vf9last)
+        if (vf15 != vf15last)
         {
-            vf9last = vf9;
-            vf9send = map(vf9, 0, 1023, 0, 127);
+            vf15last = vf15;
+            vf15send = map(vf15, 0, 1023, 0, 127);
         }
-        if (vf10 != vf10last)
+        if (vf16 != vf16last)
         {
-            vf10last = vf10;
-            vf10send = map(vf10, 0, 1023, 0, 127);
+            vf16last = vf16;
+            vf16send = map(vf16, 0, 1023, 0, 127);
         }
-        if (vf11 != vf11last)
+        if (vf17 != vf17last)
         {
-            vf11last = vf11;
-            vf11send = map(vf11, 0, 1023, 0, 127);
+            vf17last = vf17;
+            vf17send = map(vf17, 0, 1023, 0, 127);
         }
-        if (vf12 != vf12last)
+        if (vf18 != vf18last)
         {
-            vf12last = vf12;
-            vf12send = map(vf12, 0, 1023, 0, 127);
+            vf18last = vf18;
+            vf18send = map(vf18, 0, 1023, 0, 127);
         }
-  
 
+        Serial.print("B1");
+        Serial.println(sb1);
+
+        delay(500);
 }
 
-void b1
+
+
+        
+
+void bA ()
 {
     if (sb1 == 0)
     {
@@ -199,8 +213,12 @@ void b1
     {
         sb1 = 0;
     }
+    Serial.print("B1");
+        Serial.println(sb1);
 }
-void b2
+
+
+void bB ()
 {
     if (sb2 == 0)
     {
@@ -210,8 +228,10 @@ void b2
     {
         sb2 = 0;
     }
+    Serial.print("B2");
+        Serial.println(sb2);
 }
-void b3
+void bC ()
 {
     if (sb3 == 0)
     {
@@ -221,8 +241,10 @@ void b3
     {
         sb3 = 0;
     }
+    Serial.print("B3");
+        Serial.println(sb3);
 }
-void b4
+void bD ()
 {
     if (sb4 == 0)
     {
@@ -232,8 +254,10 @@ void b4
     {
         sb4 = 0;
     }
+    Serial.print("B4");
+        Serial.println(sb4);
 }
-void b5
+void bE ()
 {
     if (sb5 == 0)
     {
@@ -243,8 +267,10 @@ void b5
     {
         sb5 = 0;
     }
+    Serial.print("B5");
+        Serial.println(sb5);
 }
-void b6
+void bF ()
 {
     if (sb6 == 0)
     {
@@ -254,4 +280,6 @@ void b6
     {
         sb6 = 0;
     }
+    Serial.print("B6");
+        Serial.println(sb6);
 }
