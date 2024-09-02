@@ -261,63 +261,63 @@ void loop()
         valf18 = analogRead(fader18);
 
         if(valf1 != lastf1){
-            megaa.midif1 = map(valf1, 0, 1023, 0, 127);
+            megaa.midif1 = map(valf1, 1023, 0, 0, 127);
             analogWrite(ledfader1, megaa.midif1);
             lastf1 = valf1;
         }
         if(valf2 != lastf2){
-            megaa.midif2 = map(valf2, 0, 1023, 0, 127);
+            megaa.midif2 = map(valf2, 1023, 0, 0, 127);
             analogWrite(ledfader2, megaa.midif2);
             lastf2 = valf2;
         }
         if(valf3 != lastf3){
-            megaa.midif3 = map(valf3, 0, 1023, 0, 127);
+            megaa.midif3 = map(valf3, 1023, 0, 0, 127);
             analogWrite(ledfader3, megaa.midif3);
             lastf3 = valf3;
         }
         if(valf4 != lastf4){
-            megaa.midif4 = map(valf4, 0, 1023, 0, 127);
+            megaa.midif4 = map(valf4, 1023, 0, 0, 127);
             analogWrite(ledfader4, megaa.midif4);
             lastf4 = valf4;
         }
         if(valf5 != lastf5){
-            megaa.midif5 = map(valf5, 0, 1023, 0, 127);
+            megaa.midif5 = map(valf5, 1023, 0, 0, 127);
             analogWrite(ledfader5, megaa.midif5);
             lastf5 = valf5;
         }
         if(valf6 != lastf6){
-            megaa.midif6 = map(valf6, 0, 1023, 0, 127);
+            megaa.midif6 = map(valf6, 1023, 0, 0, 127);
             analogWrite(ledfader6, megaa.midif6);
             lastf6 = valf6;
         }
 
         if(valf13 != lastf13){
-            megaa.midif13 = map(valf13, 0, 1023, 0, 127);
+            megaa.midif13 = map(valf13, 1023, 0, 0, 127);
             analogWrite(ledfader13, megaa.midif13);
             lastf13 = valf13;
         }
         if(valf14 != lastf14){
-            megaa.midif14 = map(valf14, 0, 1023, 0, 127);
+            megaa.midif14 = map(valf14, 1023, 0, 0, 127);
             analogWrite(ledfader14, megaa.midif14);
             lastf14 = valf14;
         }
         if(valf15 != lastf15){
-            megaa.midif15 = map(valf15, 0, 1023, 0, 127);
+            megaa.midif15 = map(valf15, 1023, 0, 0, 127);
             analogWrite(ledfader15, megaa.midif15);
             lastf15 = valf15;
         }
         if(valf16 != lastf16){
-            megaa.midif16 = map(valf16, 0, 1023, 0, 127);
+            megaa.midif16 = map(valf16, 1023, 0, 0, 127);
             analogWrite(ledfader16, megaa.midif16);
             lastf16 = valf16;
         }
         if(valf17 != lastf17){
-            megaa.midif17 = map(valf17, 0, 1023, 0, 127);
+            megaa.midif17 = map(valf17, 1023, 0, 0, 127);
             analogWrite(ledfader17, megaa.midif17);
             lastf17 = valf17;
         }
         if(valf18 != lastf18){
-            megaa.midif18 = map(valf18, 0, 1023, 0, 127);
+            megaa.midif18 = map(valf18, 1023, 0, 0, 127);
             analogWrite(ledfader18, megaa.midif18);
             lastf18 = valf18;
         }
