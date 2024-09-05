@@ -123,6 +123,8 @@
 
 void setup ()
 {
+    /*Serial*/
+        Serial.begin(9600);
     /*MIDI*/
         MIDI.begin(MIDI_CHANNEL_OMNI);
 
