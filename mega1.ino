@@ -150,9 +150,9 @@
 void setup()
 {
     /*Serial*/
-        Serial.begin(9600);
+        Serial.begin(115200);
     /*Wire*/
-        Wire.begin(SLAVE_Mega1);
+        Wire.begin(2);
         Wire.onRequest(requestEvent);
     /*pinMode*/
         pinMode(button1, INPUT_PULLUP);

@@ -124,12 +124,12 @@
 void setup ()
 {
     /*Serial*/
-        Serial.begin(9600);
+        Serial.begin(115200);
     /*MIDI*/
         MIDI.begin(MIDI_CHANNEL_OMNI);
 
     /*I2C*/
-        Wire.begin();     // Initialize As A Master I2C Device
+        Wire.begin();       // Initialize As A Master I2C Device
         //Wire.setClock(clockFrequency)
 }
 
