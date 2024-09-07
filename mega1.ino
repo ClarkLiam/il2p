@@ -1,7 +1,7 @@
 /*Project: IL2P*/
 /*Device: Elegoo_Mega1*/
 /*Author: Liam Clark */
-/*Version: 1.5*/
+/*Version: 1.7*/
 
 /*Libraries*/  
     #include <Wire.h>
@@ -153,6 +153,7 @@ void setup()
         Serial.begin(115200);
     /*Wire*/
         Wire.begin(2);
+        Wire.setClock(400000);
         Wire.onRequest(requestEvent);
     /*pinMode*/
         pinMode(button1, INPUT_PULLUP);
@@ -248,81 +249,81 @@ void loop()
         //read faders and map to 0-127
         //send to uno
         //update led
+
         valf1 = analogRead(fader1);
-        valf2 = analogRead(fader2);
-        valf3 = analogRead(fader3);
-        valf4 = analogRead(fader4);
-        valf5 = analogRead(fader5);
-        valf6 = analogRead(fader6);
-
-        valf13 = analogRead(fader13);
-        valf14 = analogRead(fader14);
-        valf15 = analogRead(fader15);
-        valf16 = analogRead(fader16);
-        valf17 = analogRead(fader17);
-        valf18 = analogRead(fader18);
-
         if(valf1 != lastf1){
             megaa.midif1 = map(valf1, 1023, 0, 0, 127);
             analogWrite(ledfader1, megaa.midif1 / 4);
             lastf1 = valf1;
         }
+        valf2 = analogRead(fader2);
         if(valf2 != lastf2){
             megaa.midif2 = map(valf2, 1023, 0, 0, 127);
             analogWrite(ledfader2, megaa.midif2 / 4);
             lastf2 = valf2;
         }
+        valf3 = analogRead(fader3);
         if(valf3 != lastf3){
             megaa.midif3 = map(valf3, 1023, 0, 0, 127);
             analogWrite(ledfader3, megaa.midif3 / 4);
             lastf3 = valf3;
         }
+        valf4 = analogRead(fader4);
         if(valf4 != lastf4){
             megaa.midif4 = map(valf4, 1023, 0, 0, 127);
             analogWrite(ledfader4, megaa.midif4 / 4);
             lastf4 = valf4;
         }
+        valf5 = analogRead(fader5);
         if(valf5 != lastf5){
             megaa.midif5 = map(valf5, 1023, 0, 0, 127);
             analogWrite(ledfader5, megaa.midif5 / 4);
             lastf5 = valf5;
         }
+        valf6 = analogRead(fader6);
         if(valf6 != lastf6){
             megaa.midif6 = map(valf6, 1023, 0, 0, 127);
             analogWrite(ledfader6, megaa.midif6 / 4);
             lastf6 = valf6;
         }
 
+        valf13 = analogRead(fader13);
         if(valf13 != lastf13){
             megaa.midif13 = map(valf13, 1023, 0, 0, 127);
             analogWrite(ledfader13, megaa.midif13 / 4);
             lastf13 = valf13;
         }
+        valf14 = analogRead(fader14);
         if(valf14 != lastf14){
             megaa.midif14 = map(valf14, 1023, 0, 0, 127);
             analogWrite(ledfader14, megaa.midif14 / 4);
             lastf14 = valf14;
         }
+        valf15 = analogRead(fader15);
         if(valf15 != lastf15){
             megaa.midif15 = map(valf15, 1023, 0, 0, 127);
             analogWrite(ledfader15, megaa.midif15 / 4);
             lastf15 = valf15;
         }
+        valf16 = analogRead(fader16);
         if(valf16 != lastf16){
             megaa.midif16 = map(valf16, 1023, 0, 0, 127);
             analogWrite(ledfader16, megaa.midif16 / 4);
             lastf16 = valf16;
         }
+        valf17 = analogRead(fader17);
         if(valf17 != lastf17){
             megaa.midif17 = map(valf17, 1023, 0, 0, 127);
             analogWrite(ledfader17, megaa.midif17 / 4);
             lastf17 = valf17;
         }
+        valf18 = analogRead(fader18);
         if(valf18 != lastf18){
             megaa.midif18 = map(valf18, 1023, 0, 0, 127);
             analogWrite(ledfader18, megaa.midif18 / 4);
             lastf18 = valf18;
         }
+        
 
 }
 

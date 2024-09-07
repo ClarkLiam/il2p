@@ -4,12 +4,12 @@
 /*Version: 1.3*/
 
 /*Libraries*/  
-    #include <MIDI.h>
-    MIDI_CREATE_DEFAULT_INSTANCE();
-
     #include <Wire.h>    
     const int SLAVE_Mega1 = 2;
     const int SLAVE_Mega2 = 3;   
+
+    #include <MIDI.h>
+    MIDI_CREATE_DEFAULT_INSTANCE();
 
 /*Definations*/
     /*PINS*/
@@ -125,12 +125,14 @@ void setup ()
 {
     /*Serial*/
         Serial.begin(115200);
-    /*MIDI*/
-        MIDI.begin(MIDI_CHANNEL_OMNI);
-
     /*I2C*/
         Wire.begin();       // Initialize As A Master I2C Device
-        //Wire.setClock(clockFrequency)
+        Wire.setClock(400000);
+
+    /*MIDI*/
+        MIDI.begin();
+        Serial.begin(115200);
+
 }
 
 void loop ()
@@ -138,7 +140,7 @@ void loop ()
     /*Get Data from Mega1 and Mega2*/
         getData1();
         getData2();
-
+        delay(100);
     /*Send MIDI*/
         /*MegaA -> Buttons*/
         if(megaa.midib1 != lastbutton1)
@@ -331,6 +333,7 @@ void loop ()
             MIDI.sendNoteOn(23, megab.midif24, 2);
             lastfader24 = megab.midif24;
         }
+        Serial.println(megaa.midif1);
 
 }
 
