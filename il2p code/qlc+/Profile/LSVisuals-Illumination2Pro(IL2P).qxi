@@ -59,12 +59,107 @@
   <Type>Button</Type>
 </Channel>
 
+<Channel Number="4225">
+  <Name>Fader1</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4226">
+  <Name>Fader2</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4227">
+  <Name>Fader3</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4228">
+  <Name>Fader4</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4229">
+  <Name>Fader5</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4230">
+  <Name>Fader6</Name>
+  <Type>Fader</Type>
+</Channel>
 
+<Channel Number="4231">
+  <Name>Fader7</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4232">
+  <Name>Fader8</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4233">
+  <Name>Fader9</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4234">
+  <Name>Fader10</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4235">
+  <Name>Fader11</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4236">
+  <Name>Fader12</Name>
+  <Type>Fader</Type>
+</Channel>
 
+<Channel Number="4237">
+  <Name>Fader13</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4238">
+  <Name>Fader14</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4239">
+  <Name>Fader15</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4240">
+  <Name>Fader16</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4241">
+  <Name>Fader17</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="4242">
+  <Name>Fader18</Name>
+  <Type>Fader</Type>
+</Channel>
 
-
- <Channel Number="129">
-  <Name>Button1</Name>
-  <Type>Button</Type>
+ <Channel Number="4243">
+  <Name>Fader19</Name>
+  <Type>Fader</Type>
  </Channel>
+  <Channel Number="4244">
+  <Name>Fader20</Name>
+  <Type>Fader</Type>
+ </Channel>
+  <Channel Number="4245">
+  <Name>Fader21</Name>
+  <Type>Fader</Type>
+ </Channel>
+  <Channel Number="4246">
+  <Name>Fader22</Name>
+  <Type>Fader</Type>
+ </Channel>
+  <Channel Number="4247">
+  <Name>Fader23</Name>
+  <Type>Fader</Type>
+ </Channel>
+  <Channel Number="4248">
+  <Name>Fader24</Name>
+  <Type>Fader</Type>
+ </Channel>
+
+
+
+ 
 </InputProfile>
