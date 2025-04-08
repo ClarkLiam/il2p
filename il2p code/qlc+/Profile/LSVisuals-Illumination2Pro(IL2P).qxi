@@ -146,18 +146,128 @@
   <Name>Fader21</Name>
   <Type>Fader</Type>
  </Channel>
-  <Channel Number="4246">
+<Channel Number="4246">
   <Name>Fader22</Name>
   <Type>Fader</Type>
  </Channel>
-  <Channel Number="4247">
+<Channel Number="4247">
   <Name>Fader23</Name>
   <Type>Fader</Type>
- </Channel>
-  <Channel Number="4248">
+</Channel>
+<Channel Number="4248">
   <Name>Fader24</Name>
   <Type>Fader</Type>
- </Channel>
+</Channel>
+
+<Channel Number="8321">
+  <Name>GrandMaster</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="8322">
+  <Name>MasterA</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="8323">
+  <Name>MasterB</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="8324">
+  <Name>Sequencer</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="8325">
+  <Name>Aux</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="8326">
+  <Name>FadeTime</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="8327">
+  <Name>Speed</Name>
+  <Type>Fader</Type>
+</Channel>
+<Channel Number="8328">
+  <Name>Delete</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8329">
+  <Name>Store</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8330">
+  <Name>Modify</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8331">
+  <Name>Sound NextUp</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8332">
+  <Name>Sound NextDown</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8333">
+  <Name>Flash Mode</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8334">
+  <Name>FM Up</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8335">
+  <Name>FM Down</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8336">
+  <Name>ChaserMode</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8337">
+  <Name>CM Up</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8338">
+  <Name>CM Down</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8339">
+  <Name>CM Stop</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8340">
+  <Name>CM GO</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8341">
+  <Name>Audio Mode</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8342">
+  <Name>AM Up</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8343">
+  <Name>AM Down</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8344">
+  <Name>Button A</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8345">
+  <Name>Button B</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8346">
+  <Name>Button Sequencer</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="8347">
+  <Name>Button Aux</Name>
+  <Type>Button</Type>
+</Channel>
+
 
 
 
