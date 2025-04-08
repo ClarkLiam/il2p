@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE InputProfile>
+<InputProfile xmlns="http://www.qlcplus.org/InputProfile">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.12.7</Version>
+  <Author>L.Clark (@LS Visusls)</Author>
+ </Creator>
+ <Manufacturer>LS Visuals</Manufacturer>
+ <Model>Illumination2Pro (IL2P)</Model>
+ <Type>MIDI</Type>
+    
+<Channel Number="129">
+    <Name>Button1</Name>
+    <Type>Button</Type>
+</Channel>
+<Channel Number="130">
+  <Name>Button2</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="131">
+  <Name>Button3</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="132">
+  <Name>Button4</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="133">
+  <Name>Button5</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="134">
+  <Name>Button6</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="135">
+  <Name>Button7</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="136">
+  <Name>Button8</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="137">
+  <Name>Button9</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="138">
+  <Name>Button10</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="139">
+  <Name>Button11</Name>
+  <Type>Button</Type>
+</Channel>
+<Channel Number="140">
+  <Name>Button12</Name>
+  <Type>Button</Type>
+</Channel>
+
+
+
+
+
+ <Channel Number="129">
+  <Name>Button1</Name>
+  <Type>Button</Type>
+ </Channel>
+</InputProfile>
