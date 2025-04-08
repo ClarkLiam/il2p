@@ -1,39 +1,66 @@
-Channel, Note, Object
-1, 0, Button1
-1, 1, Button2
-1, 2, Button3
-1, 3, Button4
-1, 4, Button5
-1, 5, Button6
-1, 6, Button7
-1, 7, Button8
-1, 8, Button9
-1, 9, Button10
-1, 10, Button11
-1, 11, Button12
+Channel, Note, Object, Type, QLC+ Channel
+1, 0, Button1, Button, 0129
+1, 1, Button2, Button, 0130
+1, 2, Button3, Button, 0131
+1, 3, Button4, Button, 0132
+1, 4, Button5, Button, 0133
+1, 5, Button6, Button, 0134
+1, 6, Button7, Button, 0135
+1, 7, Button8, Button, 0136
+1, 8, Button9, Button, 0137
+1, 9, Button10, Button, 0138
+1, 10, Button11, Button, 0139
+1, 11, Button12, Button, 0140
 
-2, 0, Fader1
-2, 1, Fader2
-2, 2, Fader3
-2, 3, Fader4
-2, 4, Fader5
-2, 5, Fader6
-2, 6, Fader7
-2, 7, Fader8
-2, 8, Fader9
-2, 9, Fader10
-2, 10, Fader11
-2, 11, Fader12
-2, 12, Fader13
-2, 13, Fader14
-2, 14, Fader15
-2, 15, Fader16
-2, 16, Fader17
-2, 17, Fader18
-2, 18, Fader19
-2, 19, Fader20
-2, 20, Fader21
-2, 21, Fader22
-2, 22, Fader23
-2, 23, Fader24
+2, 0, Fader1, Fader, 4225
+2, 1, Fader2, Fader, 4226
+2, 2, Fader3, Fader, 4227
+2, 3, Fader4, Fader, 4228
+2, 4, Fader5, Fader, 4229
+2, 5, Fader6, Fader, 4230
+2, 6, Fader7, Fader, 4231
+2, 7, Fader8, Fader, 4232
+2, 8, Fader9, Fader, 4233
+2, 9, Fader10, Fader, 4234
+2, 10, Fader11, Fader, 4235
+2, 11, Fader12, Fader, 4236
+2, 12, Fader13, Fader, 4237
+2, 13, Fader14, Fader, 4238
+2, 14, Fader15, Fader, 4239
+2, 15, Fader16, Fader, 4240
+2, 16, Fader17, Fader, 4241
+2, 17, Fader18, Fader, 4242
+2, 18, Fader19, Fader, 4243
+2, 19, Fader20, Fader, 4244
+2, 20, Fader21, Fader, 4245
+2, 21, Fader22, Fader, 4246
+2, 22, Fader23, Fader, 4247
+2, 23, Fader24, Fader, 4248
 
+3, 0, GrandMaster, Fader, 8321
+3, 1, MasterA, Fader, 8322
+3, 2, MasterB, Fader, 8323
+3, 3, Sequencer, Fader, 8324
+3, 4, Aux, Fader, 8325
+3, 5, FadeTime, Fader, 8326
+3, 6, Speed, Fader, 8327
+3, 7, Delete, Button, 8328
+3, 8, Store, Button, 8329
+3, 9, Modify, Button,8330
+3, 10, Sound NextUp, Button, 8331
+3, 11, Sound NextDown, Button, 8332
+3, 12, FlashMode, Button, 8333
+3, 13, FM UP, Button, 8334
+3, 14, FM Down, Button, 8335
+3, 15, Chaser Mode, Button, 8336
+3, 16, CM Up, Button, 8337
+3, 17, CM Down, Button, 8338
+3, 18, CM Stop, Button, 8339
+3, 19, CM GO, Button, 8340
+3, 20, Audio Mode, Button, 8341
+3, 21, AM Up, Button, 8342
+3, 22, AM Down, Button, 8343
+3, 23, ButtonA, Button, 8344
+3, 24, ButtonB, Button, 8345
+3, 25, Button Sequencer, Button, 8346
+3, 26, Button Aux, Button, 8347
