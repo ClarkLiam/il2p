@@ -22,4 +22,3 @@ Current Versions:
   
     1.1.5 pre-alpha
 
-testing gpg verification
