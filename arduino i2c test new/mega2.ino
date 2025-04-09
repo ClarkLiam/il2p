@@ -300,7 +300,7 @@ void loop()
 
 void sendData()
 {
- Wire.write(megaa.bytes, sizeof(megaa));
+ Wire.write(megab.bytes, sizeof(megab));
 }
 
 void getData()
