@@ -1,86 +1,145 @@
-@charset "UTF-8";
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
- 
-body {
-  min-height: 100vh;
-  margin: 0 auto;
-  background-color: #05051a;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-}
- 
-.wrapper {
-  position: relative;
-  height: 20rem;
-  width: 3rem;
-}
-.wrapper::before, .wrapper::after {
-  display: block;
-  position: absolute;
-  z-index: 99;
-  color: #fff;
-  width: 100%;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 1;
-  padding: 0.75rem 0;
-  pointer-events: none;
-}
-.wrapper::after {
-  content: "fader";
-  bottom: 0;
-}
- 
-input[type=range] {
-  -webkit-appearance: none;
-  background-color: rgba(255, 255, 255, 0.2);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: 0;
-  padding: 0;
-  width: 20rem;
-  height: 3.5rem;
-  transform: translate(-50%, -50%) rotate(-90deg);
-  border-radius: 1rem;
-  overflow: hidden;
-  cursor: row-resize;
-}
-input[type=range][step] {
-  background-color: transparent;
-  background-image: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(12.5% - 1px), #05051a 12.5%);
-}
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 0;
-  box-shadow: -20rem 0 0 20rem rgba(255, 255, 255, 0.2);
-}
-input[type=range]::-moz-range-thumb {
-  border: none;
-  width: 0;
-  box-shadow: -20rem 0 0 20rem rgba(255, 255, 255, 0.2);
+body{
+    background: #171a1f;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
 }
 
-.BankA, .BankB, .fader1-6, .fader7-12, .fader13-18, .fader19-24 {
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    width: 90vw;
+    line-height: 1em;
+}
+
+.Console {
+    background: #2f3135;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 15px;
+    width: 90vw;
+    height: 65vw;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.faderwing{
+    background: #5b6375;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    width: calc(55vw - 5px);
+    height: calc(65vw - 20px);
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin-right: 10px;
+}
+.commandwing{
+    background: #5b6375;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    width: calc(35vw - 5px);
+    height: calc(65vw - 20px);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.button-bank{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 0 auto;
-    padding: 0.5rem;
+}
+.buttonblock{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.buttonblock#vertical{
+    flex-direction: column;
+    
+}
+.button-wrapper{
+    width: 3vw;
+    height: 3vw;
+    position: relative;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+.button-wrapper#vertical{
+    width: 3vw;
+    height: 3vw;
+    position: relative;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+.button {
+    width: 3vw;
+    height: 3vw;
+    background: #222222;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
 
 }
 
-.fader {
+.spacer {
+    height: 10vw;
+}
+
+.controlsection{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.stack#minusmargin{
+    margin-left: -1rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.group {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0.5rem;
 }
