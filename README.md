@@ -6,11 +6,15 @@ Repository contains the custom software for the controlling PC as well as the co
 At some Point there may also be custom 3D CAD files.
 
 Current Versions:
+
   Firmeware Version:
+  
     UNO:   1.8.1 pre-alpha
     MegaA: 1.8.1 pre-alpha
     MegaB: 1.8.1 pre-alpha
   OS-Version:
+  
     1.1 pre-alpha (based on Win10 Pro)
   WebOS Version:
+  
     1.1.5 pre-alpha
