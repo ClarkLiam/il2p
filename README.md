@@ -12,9 +12,11 @@ Current Versions:
     UNO:   1.8.1 pre-alpha
     MegaA: 1.8.1 pre-alpha
     MegaB: 1.8.1 pre-alpha
+
   OS-Version:
   
     1.1 pre-alpha (based on Win10 Pro)
+    
   WebOS Version:
   
     1.1.5 pre-alpha
