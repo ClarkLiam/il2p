@@ -87,7 +87,7 @@ h1.system {
     background: #5b6375;
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
+    font-size: 12px;
     padding: 10px;
     border-radius: 10px;
     width: calc(35vw - 5px);
@@ -106,9 +106,9 @@ h1.system {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-top: 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 .buttonblock#vertical{
     flex-direction: column;
@@ -118,15 +118,15 @@ h1.system {
     width: 3vw;
     height: 3vw;
     position: relative;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
 }
 .button-wrapper#vertical{
     width: 3vw;
     height: 3vw;
     position: relative;
-    margin-top: 0.2em;
-    margin-bottom: 0.2em;
+    margin-top: 0.3vw;
+    margin-bottom: 0.3vw;
 }
 .button {
     width: 3vw;
@@ -144,7 +144,7 @@ h1.system {
 }
 
 .spacer {
-    height: 18vw;
+    height: 20vw;
 }
 
 .controlsection{
@@ -152,14 +152,18 @@ h1.system {
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    margin-top: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-top: 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+.controlsection#top {
+    height: 20vw;
 }
 .controlsection#display {
     height: 8vw;
     background-color: #000000;
     border-radius: 5px;
+    margin-top: 4vw;
 }
 
 .stack {
@@ -168,7 +172,7 @@ h1.system {
     justify-content: left;
 }
 .stack#minusmargin{
-    margin-left: -1rem;
+    margin-left: -1vw;
 }
 
 .button-group {
@@ -183,4 +187,16 @@ h1.system {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 1vw;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+}
+
+#sequencer2 {
+    margin-top: -21vw;
+    margin-right: 1vw;
+}
+
+#submaster {
+    margin-left: -1vw;
 }

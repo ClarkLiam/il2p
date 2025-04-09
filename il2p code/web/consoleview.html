@@ -16,10 +16,7 @@
 <body>
     <section class="Console">
         <div class="faderwing">
-            <div class="spacer">
-                <h1>Console View</h1>
-                <p>Welcome to the console view of your Illumination2Pro. Here you can view the current values and layout.</p>
-            </div>
+            <div class="spacer"> </div>
             <div class="bank" id="A">
                 <div class="faderblock" id="FB1-6">
                     <div class="fader-wrapper">
@@ -148,7 +145,7 @@
             </div>
         </div>
         <div class="commandwing">
-            <div class="controlsection">
+            <div class="controlsection" #top>
                 <div class="fader-wrapper">
                     <input type='range' min='0' max='255' value='0' class="fader" id="Fader1"/>
                 </div>
@@ -179,7 +176,7 @@
                 </div>
             </div>
             <div class="controlsection" id="display">
-
+                
             </div>
             <div class="controlsection">
                 <div class="group" id="submaster">
@@ -214,8 +211,19 @@
                     </div>
                 </div>
                 <div class="group" id="sequencer">
-                    
-
+                    <div class="button-group">
+                        <div class="button-wrapper">
+                            <button class="button" id="Button"></button>
+                        </div>
+                        <div class="stack">
+                            <div class="button-wrapper" id="vertical">
+                                <button class="button" id="Button"></button>
+                            </div>
+                            <div class="button-wrapper" id="vertical">
+                                <button class="button" id="Button"></button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="buttonblock">
                         <div class="button-wrapper">
                             <button class="button" id="Button"></button>
@@ -227,8 +235,40 @@
                         </div>
                     </div>
                 </div>
+                <div class="group" id="sequencer2">
+                    <div class="stack">
+                        <div class="button-wrapper" id="vertical">
+                            <button class="button" id="Button"></button>
+                        </div><div class="button-wrapper" id="vertical">
+                            <button class="button" id="Button"></button>
+                        </div>
+                    </div>
+                </div>
+            
                 <div class="group" id="aux">
-
+                    <div class="button-group">
+                        <div class="button-wrapper">
+                            <button class="button" id="Button"></button>
+                        </div>
+                        <div class="stack">
+                            <div class="button-wrapper" id="vertical">
+                                <button class="button" id="Button"></button>
+                            </div>
+                            <div class="button-wrapper" id="vertical">
+                                <button class="button" id="Button"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttonblock">
+                        <div class="button-wrapper">
+                            <button class="button" id="Button"></button>
+                        </div>
+                    </div>
+                    <div class="faderblock">
+                        <div class="fader-wrapper">
+                            <input type='range' min='0' max='255' value='0' class="fader" id="Fader"/>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -237,3 +277,5 @@
 </body>
 
 </html>
+
+

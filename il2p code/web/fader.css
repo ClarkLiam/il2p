@@ -26,8 +26,8 @@ input.fader {
   width: 3vw;
   height: 16vw;
   position: relative;
-  margin-left: 0.2em;
-  margin-right: 0.2em;
+  margin-left: 0.3vw;
+  margin-right: 0.3vw;
 }
 
 .faderblock {
@@ -35,7 +35,7 @@ input.fader {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 1em;
+  margin: 1vw;
 }
 
 .bank {
