@@ -14,19 +14,12 @@
 </head>
 
 <body>
-    <section class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Console View</h1>
-                    <p>Welcome to the console view of your Illumination2Pro. Here you can view the current values and layout.</p>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="Console">
         <div class="faderwing">
-            <div class="spacer"></div>
+            <div class="spacer">
+                <h1>Console View</h1>
+                <p>Welcome to the console view of your Illumination2Pro. Here you can view the current values and layout.</p>
+            </div>
             <div class="bank" id="A">
                 <div class="faderblock" id="FB1-6">
                     <div class="fader-wrapper">
@@ -203,7 +196,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="buttonblock">
+                    <div class="buttonblock" >
                         <div class="button-wrapper">
                             <button class="button" id="Button"></button>
                         </div>
@@ -221,7 +214,18 @@
                     </div>
                 </div>
                 <div class="group" id="sequencer">
+                    
 
+                    <div class="buttonblock">
+                        <div class="button-wrapper">
+                            <button class="button" id="Button"></button>
+                        </div>
+                    </div>
+                    <div class="faderblock">
+                        <div class="fader-wrapper">
+                            <input type='range' min='0' max='255' value='0' class="fader" id="Fader"/>
+                        </div>
+                    </div>
                 </div>
                 <div class="group" id="aux">
 
