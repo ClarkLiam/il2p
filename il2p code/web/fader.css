@@ -4,18 +4,18 @@ input.fader {
   position: relative;
   overflow: hidden;
   height: 3vw;
-  width: 20vw;
+  width: 16vw;
   cursor: pointer;
   transform: rotate(-90deg);
   transform-origin: left top;
-  margin-top: 20vw;
+  margin-top: 16vw;
   border-radius: 5px;
   background: #222222;
   color: #fff;
 }
 .fader::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 01vw;
+  width: 1vw;
   height: 3vw;
   background-color: rgb(156, 156, 156);
   overflow: visible;
@@ -24,7 +24,7 @@ input.fader {
 
 .fader-wrapper{
   width: 3vw;
-  height: 20vw;
+  height: 16vw;
   position: relative;
   margin-left: 0.2em;
   margin-right: 0.2em;
