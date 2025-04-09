@@ -71,7 +71,7 @@ h1.system {
 }
 
 .faderwing{
-    background: #5b6375;
+    /*background: #5b6375;*/
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
     font-size: 12px;
@@ -84,7 +84,7 @@ h1.system {
     margin-right: 10px;
 }
 .commandwing{
-    background: #5b6375;
+    /*background: #5b6375;*/
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
     font-size: 12px;
