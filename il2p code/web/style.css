@@ -13,14 +13,18 @@ body{
 .system {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     
 }
 h1.system {
     text-align: center;
 }
-.sysinfo, .sysstat{
+.sysinfo, .sysstat, .outputs{
     margin: 1.2em;
+}
+.outputs{
+    justify-content: left;
+    text-align: left;
 }
 
 .menu{
