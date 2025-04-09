@@ -21,3 +21,5 @@ Current Versions:
   WebOS Version:
   
     1.1.5 pre-alpha
+
+testing gpg verification
