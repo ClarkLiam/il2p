@@ -46,6 +46,7 @@ const int SLAVE_Mega2 = 3;
     #define ledfader15 10
     #define ledfader16 11
     #define ledfader17 12
+    #define ledfader18 13
 
 /*Variables*/
     /*Button States*/
@@ -55,6 +56,13 @@ const int SLAVE_Mega2 = 3;
     int stateb4 = 0;
     int stateb5 = 0;
     int stateb6 = 0;
+
+    int valb1 = 0;
+    int valb2 = 0;
+    int valb3 = 0;
+    int valb4 = 0;
+    int valb5 = 0;
+    int valb6 = 0;
 
     int lastb1 = 0;
     int lastb2 = 0;
@@ -77,6 +85,20 @@ const int SLAVE_Mega2 = 3;
     int valf16 = 0;
     int valf17 = 0;
     int valf18 = 0;
+
+    int lastf1 = 0;
+    int lastf2 = 0;
+    int lastf3 = 0;
+    int lastf4 = 0;
+    int lastf5 = 0;
+    int lastf6 = 0;
+    
+    int lastf13 = 0;
+    int lastf14 = 0;
+    int lastf15 = 0;
+    int lastf16 = 0;
+    int lastf17 = 0;
+    int lastf18 = 0;
 
     /*LEDs*/
     int ledstate1 = 0;
