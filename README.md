@@ -22,3 +22,5 @@ Current Versions:
   
     1.1.5 pre-alpha
 
+---Notes---
+Wire.h Buffersize must be increased to  least 48bytes
