@@ -117,8 +117,7 @@ union data_A
     data_B megab;
 
 void setup() {
-  Wire.begin(SLAVE_UNO); // Join I2C bus with address #1
-  Wire.onRequest(sendData);
+  Wire.begin(1); // Join I2C bus with address #1
 
   MIDI.begin();
   Serial.begin(115200);
@@ -127,6 +126,7 @@ void setup() {
 
 void loop() {
     getData1();
+    delay(50);
     getData2();
     delay(50);
 
@@ -315,20 +315,45 @@ void loop() {
         }
 }
 
-void sendData()
-{
- Wire.write(megaa.bytes, sizeof(megaa));
+
+
+void getData1() {
+  // Request 36 bytes from Mega1 (Slave Address 2)
+  Wire.requestFrom(2, sizeof(megaa.bytes));
+  delay(10); // Wait for the data to be available
+  if (Wire.available() == sizeof(megaa.bytes)) {
+    for (unsigned int i = 0; i < sizeof(megaa.bytes); i++) {
+      megaa.bytes[i] = Wire.read(); // Read each byte into the union
+    }
+
+    // Debugging: Print the received data
+    Serial.println("Data received from Mega1:");
+    for (unsigned int i = 0; i < sizeof(megaa.bytes); i++) {
+      Serial.print(megaa.bytes[i]);
+      Serial.print(" ");
+    }
+    Serial.println();
+  } else {
+    Serial.println("Failed to receive data from Mega1");
+  }
 }
 
-void getData1()
-{
-  Wire.requestFrom(SLAVE_Mega1, sizeof(megaa));
-  for (unsigned int i = 0; i < sizeof(megaa); i++)
-    megaa.bytes[i] = Wire.read();
-}
-void getData2()
-{
-  Wire.requestFrom(SLAVE_Mega2, sizeof(megab));
-  for (unsigned int i = 0; i < sizeof(megab); i++)
-    megab.bytes[i] = Wire.read();
+void getData2() {
+  // Request 36 bytes from Mega2 (Slave Address 3)
+  Wire.requestFrom(3, sizeof(megab.bytes));
+  if (Wire.available() == sizeof(megab.bytes)) {
+    for (unsigned int i = 0; i < sizeof(megab.bytes); i++) {
+      megab.bytes[i] = Wire.read(); // Read each byte into the union
+    }
+
+    // Debugging: Print the received data
+    Serial.println("Data received from Mega2:");
+    for (unsigned int i = 0; i < sizeof(megab.bytes); i++) {
+      Serial.print(megab.bytes[i]);
+      Serial.print(" ");
+    }
+    Serial.println();
+  } else {
+    Serial.println("Failed to receive data from Mega2");
+  }
 }
