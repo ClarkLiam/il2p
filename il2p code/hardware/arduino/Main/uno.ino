@@ -1,7 +1,7 @@
 /*Project: IL2P*/
 /*Device: UNO (main)*/
 /*Author: Liam Clark */
-/*Version: 1.8.1 pre-alpha*/
+/*Version: 1.8.3 pre-alpha*/
 
 #include <Wire.h>    
 const int SLAVE_UNO = 1;
@@ -26,6 +26,7 @@ MIDI_CREATE_DEFAULT_INSTANCE();
     int lastbutton10 = 0;
     int lastbutton11 = 0;
     int lastbutton12 = 0;
+
 /*Faders*/
     int lastfader1 = 0;
     int lastfader2 = 0;
@@ -56,16 +57,11 @@ MIDI_CREATE_DEFAULT_INSTANCE();
     int lastfader24 = 0;
 
 /*Unions*/
-union data_A
+    union data_FaderA
     {
     struct
     {
-        int midib1;
-        int midib2;
-        int midib3;
-        int midib4;
-        int midib5;
-        int midib6;
+        int typeFader;
 
         int midif1;
         int midif2;
@@ -81,10 +77,44 @@ union data_A
         int midif17;
         int midif18;
 
+        int midiffade;
+        int midifspeed;
     };
-    byte bytes[36];
+    byte bytes[30];
     };
-    data_A megaa;
+    data_FaderA megaafader;
+
+    union data_OtherA
+    {
+    struct
+    {
+        int typeOther;
+
+
+        int midib1;
+        int midib2;
+        int midib3;
+        int midib4;
+        int midib5;
+        int midib6;
+
+        int midibdelete;
+        int midibstore;
+        int midibmodify;
+
+        int midibsoundup;
+        int midibsounddown;
+
+        int midibflashmode;
+        int midiflashup;
+        int midiflashdown;
+
+        int waste;
+
+    };
+    byte bytes[32];
+    };
+    data_OtherA megaaother;
 
     union data_B
     {
@@ -117,7 +147,8 @@ union data_A
     data_B megab;
 
 void setup() {
-  Wire.begin(1); // Join I2C bus with address #1
+  Wire.begin(); // Join I2C bus with address #1
+  Wire.setClock(400000); // Set I2C clock speed to 400kHz
 
   MIDI.begin();
   Serial.begin(115200);
@@ -126,101 +157,112 @@ void setup() {
 
 void loop() {
     getData1();
-    delay(50);
-    getData2();
-    delay(50);
+    Serial.println("Fader Data Received:");
+    for (int i = 0; i < sizeof(megaafader.bytes); i++) {
+        Serial.print(megaafader.bytes[i]);
+        Serial.print(" ");
+    }
+    Serial.println();
+    Serial.println("Other Data Received:");
+    for (int i = 0; i < sizeof(megaaother.bytes); i++) {
+        Serial.print(megaaother.bytes[i]);
+        Serial.print(" ");
+    }
+    Serial.println();
+    //getData2();
+    //delay(500);
 
     /*Midi*/
         /*MegaA*/
-            if(megaa.midib1 != lastbutton1)
+        if(megaaother.midib1 != lastbutton1)
         {
-            MIDI.sendNoteOn(0, megaa.midib1, 1);
-            lastbutton1 = megaa.midib1;
+            MIDI.sendNoteOn(0, megaaother.midib1, 1);
+            lastbutton1 = megaaother.midib1;
         }
-        if(megaa.midib2 != lastbutton2)
+        if(megaaother.midib2 != lastbutton2)
         {
-            MIDI.sendNoteOn(1, megaa.midib2, 1);
-            lastbutton2 = megaa.midib2;
+            MIDI.sendNoteOn(1, megaaother.midib2, 1);
+            lastbutton2 = megaaother.midib2;
         }
-        if(megaa.midib3 != lastbutton3)
+        if(megaaother.midib3 != lastbutton3)
         {
-            MIDI.sendNoteOn(2, megaa.midib3, 1);
-            lastbutton3 = megaa.midib3;
+            MIDI.sendNoteOn(2, megaaother.midib3, 1);
+            lastbutton3 = megaaother.midib3;
         }
-        if(megaa.midib4 != lastbutton4)
+        if(megaaother.midib4 != lastbutton4)
         {
-            MIDI.sendNoteOn(3, megaa.midib4, 1);
-            lastbutton4 = megaa.midib4;
+            MIDI.sendNoteOn(3, megaaother.midib4, 1);
+            lastbutton4 = megaaother.midib4;
         }
-        if(megaa.midib5 != lastbutton5)
+        if(megaaother.midib5 != lastbutton5)
         {
-            MIDI.sendNoteOn(4, megaa.midib5, 1);
-            lastbutton5 = megaa.midib5;
+            MIDI.sendNoteOn(4, megaaother.midib5, 1);
+            lastbutton5 = megaaother.midib5;
         }
-        if(megaa.midib6 != lastbutton6)
+        if(megaaother.midib6 != lastbutton6)
         {
-            MIDI.sendNoteOn(5, megaa.midib6, 1);
-            lastbutton6 = megaa.midib6;
+            MIDI.sendNoteOn(5, megaaother.midib6, 1);
+            lastbutton6 = megaaother.midib6;
         }
-        if(megaa.midif1 != lastfader1)
+        if(megaafader.midif1 != lastfader1)
         {
-            MIDI.sendNoteOn(0, megaa.midif1, 2);
-            lastfader1 = megaa.midif1;
+            MIDI.sendNoteOn(0, megaafader.midif1, 2);
+            lastfader1 = megaafader.midif1;
         }
-        if(megaa.midif2 != lastfader2)
+        if(megaafader.midif2 != lastfader2)
         {
-            MIDI.sendNoteOn(1, megaa.midif2, 2);
-            lastfader2 = megaa.midif2;
+            MIDI.sendNoteOn(1, megaafader.midif2, 2);
+            lastfader2 = megaafader.midif2;
         }
-        if(megaa.midif3 != lastfader3)
+        if(megaafader.midif3 != lastfader3)
         {
-            MIDI.sendNoteOn(2, megaa.midif3, 2);
-            lastfader3 = megaa.midif3;
+            MIDI.sendNoteOn(2, megaafader.midif3, 2);
+            lastfader3 = megaafader.midif3;
         }
-        if(megaa.midif4 != lastfader4)
+        if(megaafader.midif4 != lastfader4)
         {
-            MIDI.sendNoteOn(3, megaa.midif4, 2);
-            lastfader4 = megaa.midif4;
+            MIDI.sendNoteOn(3, megaafader.midif4, 2);
+            lastfader4 = megaafader.midif4;
         }
-        if(megaa.midif5 != lastfader5)
+        if(megaafader.midif5 != lastfader5)
         {
-            MIDI.sendNoteOn(4, megaa.midif5, 2);
-            lastfader5 = megaa.midif5;
+            MIDI.sendNoteOn(4, megaafader.midif5, 2);
+            lastfader5 = megaafader.midif5;
         }
-        if(megaa.midif6 != lastfader6)
+        if(megaafader.midif6 != lastfader6)
         {
-            MIDI.sendNoteOn(5, megaa.midif6, 2);
-            lastfader6 = megaa.midif6;
+            MIDI.sendNoteOn(5, megaafader.midif6, 2);
+            lastfader6 = megaafader.midif6;
         }
-        if(megaa.midif13 != lastfader13)
+        if(megaafader.midif13 != lastfader13)
         {
-            MIDI.sendNoteOn(12, megaa.midif13, 2);
-            lastfader13 = megaa.midif13;
+            MIDI.sendNoteOn(12, megaafader.midif13, 2);
+            lastfader13 = megaafader.midif13;
         }
-        if(megaa.midif14 != lastfader14)
+        if(megaafader.midif14 != lastfader14)
         {
-            MIDI.sendNoteOn(13, megaa.midif14, 2);
-            lastfader14 = megaa.midif14;
+            MIDI.sendNoteOn(13, megaafader.midif14, 2);
+            lastfader14 = megaafader.midif14;
         }
-        if(megaa.midif15 != lastfader15)
+        if(megaafader.midif15 != lastfader15)
         {
-            MIDI.sendNoteOn(14, megaa.midif15, 2);
-            lastfader15 = megaa.midif15;
+            MIDI.sendNoteOn(14, megaafader.midif15, 2);
+            lastfader15 = megaafader.midif15;
         }
-        if(megaa.midif16 != lastfader16)
+        if(megaafader.midif16 != lastfader16)
         {
-            MIDI.sendNoteOn(15, megaa.midif16, 2);
-            lastfader16 = megaa.midif16;
+            MIDI.sendNoteOn(15, megaafader.midif16, 2);
+            lastfader16 = megaafader.midif16;
         }
-        if(megaa.midif17 != lastfader17)
+        if(megaafader.midif17 != lastfader17)
         {
-            MIDI.sendNoteOn(16, megaa.midif17, 2);
-            lastfader17 = megaa.midif17;
+            MIDI.sendNoteOn(16, megaafader.midif17, 2);
+            lastfader17 = megaafader.midif17;
         }
-        if(megaa.midif18 != lastfader18)
+        if(megaafader.midif18 != lastfader18)
         {
-            MIDI.sendNoteOn(17, megaa.midif18, 2);
-            lastfader18 = megaa.midif18;
+            MIDI.sendNoteOn(17, megaafader.midif18, 2);
+            lastfader18 = megaafader.midif18;
         }
         /*MegaB*/
         if(megab.midib7 != lastbutton7)
@@ -317,25 +359,27 @@ void loop() {
 
 
 
-void getData1() {
-  // Request 36 bytes from Mega1 (Slave Address 2)
-  Wire.requestFrom(2, sizeof(megaa.bytes));
-  delay(10); // Wait for the data to be available
-  if (Wire.available() == sizeof(megaa.bytes)) {
-    for (unsigned int i = 0; i < sizeof(megaa.bytes); i++) {
-      megaa.bytes[i] = Wire.read(); // Read each byte into the union
-    }
-
-    // Debugging: Print the received data
-    Serial.println("Data received from Mega1:");
-    for (unsigned int i = 0; i < sizeof(megaa.bytes); i++) {
-      Serial.print(megaa.bytes[i]);
-      Serial.print(" ");
-    }
-    Serial.println();
-  } else {
-    Serial.println("Failed to receive data from Mega1");
-  }
+void getData1()
+{
+    Wire.requestFrom(SLAVE_Mega1, sizeof(megaafader));
+    if (Wire.available() == sizeof(megaafader)) {
+        Wire.readBytes(megaafader.bytes, sizeof(megaafader));
+    }else{
+        if (Wire.available() == sizeof(megaaother)) {
+        Wire.readBytes(megaaother.bytes, sizeof(megaaother));
+        }else{
+            Serial.println("Failed to receive data from Mega1");
+    }}
+    delay(100);
+    Wire.requestFrom(SLAVE_Mega1, sizeof(megaaother));
+    if (Wire.available() == sizeof(megaaother)) {
+        Wire.readBytes(megaaother.bytes, sizeof(megaaother));
+    }else{
+        if (Wire.available() == sizeof(megaafader)) {
+        Wire.readBytes(megaafader.bytes, sizeof(megaafader));
+        }else{
+        Serial.println("Failed to receive data from Mega1");
+    }}
 }
 
 void getData2() {
@@ -357,3 +401,5 @@ void getData2() {
     Serial.println("Failed to receive data from Mega2");
   }
 }
+
+

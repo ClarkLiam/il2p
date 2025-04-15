@@ -131,6 +131,7 @@ void setup()
         Serial.begin(115200);
     /*Wire*/
         Wire.begin(SLAVE_Mega2);    // Join I2C bus with address #3
+        Wire.setClock(400000); // Set I2C clock speed to 400kHz
         Wire.onRequest(sendData);
     /*pinMode*/
         pinMode(button7, INPUT_PULLUP);
