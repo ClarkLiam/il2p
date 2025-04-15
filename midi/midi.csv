@@ -64,3 +64,4 @@ Channel, Note, Object, Type, QLC+ Channel
 3, 24, ButtonB, Button, 8345
 3, 25, Button Sequencer, Button, 8346
 3, 26, Button Aux, Button, 8347
+3, 27, DBO, Button, 8348

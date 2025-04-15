@@ -267,4 +267,7 @@
   <Name>Button Aux</Name>
   <Type>Button</Type>
 </Channel>
+<Channel Number="8348">
+  <Name>DBO</Name>
+  <Type>Button</Type>
 </InputProfile>
