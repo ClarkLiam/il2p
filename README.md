@@ -22,5 +22,9 @@ Current Versions:
   
     1.1.5 pre-alpha
 
+  Library Versions:
+
+    DigitDisplay: 2.1.1 beta
+
 ---Notes---
 To replicate you must install the custom library (digitdisplay), that can be found in the files.
