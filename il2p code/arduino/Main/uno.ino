@@ -513,110 +513,110 @@ void loop() {
             MIDI.sendNoteOn(2, megabsubmaster.midifB, 3);
             lastfaderB = megabsubmaster.midifB;
         }
-        if(midibother.midifSequencer != lastfaderSequencer)
+        if(megabfader.midifSequencer != lastfaderSequencer)
         {
-            MIDI.sendNoteOn(3, midibother.midifSequencer, 3);
-            lastfaderSequencer = midibother.midifSequencer;
+            MIDI.sendNoteOn(3, megabfader.midifSequencer, 3);
+            lastfaderSequencer = megabfader.midifSequencer;
         }
-        if(midibother.midifAux != lastfaderAux)
+        if(megabfader.midifAux != lastfaderAux)
         {
-            MIDI.sendNoteOn(4, midibother.midifAux, 3);
-            lastfaderAux = midibother.midifAux;
+            MIDI.sendNoteOn(4, megabfader.midifAux, 3);
+            lastfaderAux = megabfader.midifAux;
         }
-        if(megaaother.midifade != lastfaderFade)
+        if(megaafader.midiffade != lastfaderFade)
         {
-            MIDI.sendNoteOn(5, megaaother.midifade, 3);
-            lastfaderFade = megaaother.midifade;
+            MIDI.sendNoteOn(5, megaafader.midiffade, 3);
+            lastfaderFade = megaafader.midiffade;
         }
-        if(megaaother.midifspeed != lastfaderSpeed)
+        if(megaafader.midifspeed != lastfaderSpeed)
         {
-            MIDI.sendNoteOn(6, megaaother.midifspeed, 3);
-            lastfaderSpeed = megaaother.midifspeed;
+            MIDI.sendNoteOn(6, megaafader.midifspeed, 3);
+            lastfaderSpeed = megaafader.midifspeed;
         }
-        if(midiaother.midibdelete != lastbuttonDelete)
+        if(megaaother.midibdelete != lastbuttonDelete)
         {
-            MIDI.sendNoteOn(7, midiaother.midibdelete, 3);
-            lastbuttonDelete = midiaother.midibdelete;
+            MIDI.sendNoteOn(7, megaaother.midibdelete, 3);
+            lastbuttonDelete = megaaother.midibdelete;
         }
-        if(midiaother.midibstore != lastbuttonStore)
+        if(megaaother.midibstore != lastbuttonStore)
         {
-            MIDI.sendNoteOn(8, midiaother.midibstore, 3);
-            lastbuttonStore = midiaother.midibstore;
+            MIDI.sendNoteOn(8, megaaother.midibstore, 3);
+            lastbuttonStore = megaaother.midibstore;
         }
-        if(midiaother.midibmodify != lastbuttonModify)
+        if(megaaother.midibmodify != lastbuttonModify)
         {
-            MIDI.sendNoteOn(9, midiaother.midibmodify, 3);
-            lastbuttonModify = midiaother.midibmodify;
+            MIDI.sendNoteOn(9, megaaother.midibmodify, 3);
+            lastbuttonModify = megaaother.midibmodify;
         }
-        if(midiaother.midibsoundup != lastbuttonSoundUp)
+        if(megaaother.midibsoundup != lastbuttonSoundUp)
         {
-            MIDI.sendNoteOn(10, midiaother.midibsoundup, 3);
-            lastbuttonSoundUp = midiaother.midibsoundup;
+            MIDI.sendNoteOn(10, megaaother.midibsoundup, 3);
+            lastbuttonSoundUp = megaaother.midibsoundup;
         }
-        if(midiaother.midibsounddown != lastbuttonSoundDown)
+        if(megaaother.midibsounddown != lastbuttonSoundDown)
         {
-            MIDI.sendNoteOn(11, midiaother.midibsounddown, 3);
-            lastbuttonSoundDown = midiaother.midibsounddown;
+            MIDI.sendNoteOn(11, megaaother.midibsounddown, 3);
+            lastbuttonSoundDown = megaaother.midibsounddown;
         }
-        if(midiaother.midibflashmode != lastbuttonFlashMode)
+        if(megaaother.midibflashmode != lastbuttonFlashMode)
         {
-            MIDI.sendNoteOn(12, midiaother.midibflashmode, 3);
-            lastbuttonFlashMode = midiaother.midibflashmode;
+            MIDI.sendNoteOn(12, megaaother.midibflashmode, 3);
+            lastbuttonFlashMode = megaaother.midibflashmode;
         }
-        if(midiaother.midiflashup != lastbuttonFlashUp)
+        if(megaaother.midiflashup != lastbuttonFlashUp)
         {
-            MIDI.sendNoteOn(13, midiaother.midiflashup, 3);
-            lastbuttonFlashUp = midiaother.midiflashup;
+            MIDI.sendNoteOn(13, megaaother.midiflashup, 3);
+            lastbuttonFlashUp = megaaother.midiflashup;
         }
-        if(midiaother.midiflashdown != lastbuttonFlashDown)
+        if(megaaother.midiflashdown != lastbuttonFlashDown)
         {
-            MIDI.sendNoteOn(14, midiaother.midiflashdown, 3);
-            lastbuttonFlashDown = midiaother.midiflashdown;
+            MIDI.sendNoteOn(14, megaaother.midiflashdown, 3);
+            lastbuttonFlashDown = megaaother.midiflashdown;
         }
-        if(midibother.midibChaserMode != lastbuttonChaserMode)
+        if(megabother.midibChaserMode != lastbuttonChaserMode)
         {
-            MIDI.sendNoteOn(15, midibother.midibChaserMode, 3);
-            lastbuttonChaserMode = midibother.midibChaserMode;
+            MIDI.sendNoteOn(15, megabother.midibChaserMode, 3);
+            lastbuttonChaserMode = megabother.midibChaserMode;
         }
-        if(midibother.midibChaserModeUp != lastbuttonChaserModeUp)
+        if(megabother.midibChaserModeUp != lastbuttonChaserModeUp)
         {
-            MIDI.sendNoteOn(16, midibother.midibChaserModeUp, 3);
-            lastbuttonChaserModeUp = midibother.midibChaserModeUp;
+            MIDI.sendNoteOn(16, megabother.midibChaserModeUp, 3);
+            lastbuttonChaserModeUp = megabother.midibChaserModeUp;
         }
-        if(midibother.midibChaserModeDown != lastbuttonChaserModeDown)
+        if(megabother.midibChaserModeDown != lastbuttonChaserModeDown)
         {
-            MIDI.sendNoteOn(17, midibother.midibChaserModeDown, 3);
-            lastbuttonChaserModeDown = midibother.midibChaserModeDown;
+            MIDI.sendNoteOn(17, megabother.midibChaserModeDown, 3);
+            lastbuttonChaserModeDown = megabother.midibChaserModeDown;
         }
-        if(midibother.midibChaserModeStop != lastbuttonChaserModeStop)
+        if(megabother.midibChaserModeStop != lastbuttonChaserModeStop)
         {
-            MIDI.sendNoteOn(18, midibother.midibChaserModeStop, 3);
-            lastbuttonChaserModeStop = midibother.midibChaserModeStop;
+            MIDI.sendNoteOn(18, megabother.midibChaserModeStop, 3);
+            lastbuttonChaserModeStop = megabother.midibChaserModeStop;
         }
-        if(midibother.midibChaserModeStart != lastbuttonChaserModeStart)
+        if(megabother.midibChaserModeStart != lastbuttonChaserModeStart)
         {
-            MIDI.sendNoteOn(19, midibother.midibChaserModeStart, 3);
-            lastbuttonChaserModeStart = midibother.midibChaserModeStart;
+            MIDI.sendNoteOn(19, megabother.midibChaserModeStart, 3);
+            lastbuttonChaserModeStart = megabother.midibChaserModeStart;
         }
-        if(midibother.midibA != lastbuttonA)
+        if(megabother.midibA != lastbuttonA)
         {
-            MIDI.sendNoteOn(23, midibother.midibA, 3);
-            lastbuttonA = midibother.midibA;
+            MIDI.sendNoteOn(23, megabother.midibA, 3);
+            lastbuttonA = megabother.midibA;
         }
-        if(midibother.midibB != lastbuttonB)
+        if(megabother.midibB != lastbuttonB)
         {
-            MIDI.sendNoteOn(24, midibother.midibB, 3);
-            lastbuttonB = midibother.midibB;
+            MIDI.sendNoteOn(24, megabother.midibB, 3);
+            lastbuttonB = megabother.midibB;
         }
-        if(midibother.midibSequencer != lastbuttonSequencer)
+        if(megabother.midibSequencer != lastbuttonSequencer)
         {
-            MIDI.sendNoteOn(25, midibother.midibSequencer, 3);
-            lastbuttonSequencer = midibother.midibSequencer;
+            MIDI.sendNoteOn(25, megabother.midibSequencer, 3);
+            lastbuttonSequencer = megabother.midibSequencer;
         }
-        if(midibother.midibAux != lastbuttonAux)
+        if(megabother.midibAux != lastbuttonAux)
         {
-            MIDI.sendNoteOn(26, midibother.midibAux, 3);
-            lastbuttonAux = midibother.midibAux;
+            MIDI.sendNoteOn(26, megabother.midibAux, 3);
+            lastbuttonAux = megabother.midibAux;
         }
 
     /*Local Ports Uno*/

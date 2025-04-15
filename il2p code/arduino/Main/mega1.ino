@@ -240,6 +240,7 @@ void setup()
         Wire.begin(SLAVE_Mega1);    // Join I2C bus with address #2
         Wire.setClock(400000); // Set I2C clock speed to 400kHz
         Wire.onRequest(sendData);
+
     /*pinMode*/
         pinMode(button1, INPUT_PULLUP);
         pinMode(button2, INPUT_PULLUP);
