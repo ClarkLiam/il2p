@@ -152,6 +152,7 @@ void setup()
         Serial.begin(115200);
     /*Wire*/
         Wire.begin(2);    // Join I2C bus with address #2
+        Wire.setClock(400000); // Set I2C clock speed to 400kHz
         Wire.onRequest(sendData);
 
 }
