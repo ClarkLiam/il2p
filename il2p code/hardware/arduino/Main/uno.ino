@@ -11,50 +11,122 @@ const int SLAVE_Mega2 = 3;
 #include <MIDI.h>
 MIDI_CREATE_DEFAULT_INSTANCE();
 
+/*Definations*/
+#define GrandMaster A0
+
+#define DBO 2
+
+#define ButtonAudioMode 3
+#define ButtonAMUp 4
+#define ButtonAMDown 5
+
+#define Display_DMX1 6
+#define Display_DMX2 7
+#define Display_DMX3 8
+#define Display_DMX4 9
+
 /*Variables*/
-/*Buttons*/
-    int lastbutton1 = 0;
-    int lastbutton2 = 0;
-    int lastbutton3 = 0;
-    int lastbutton4 = 0;
-    int lastbutton5 = 0;
-    int lastbutton6 = 0;
+    /*Buttons*/
+        int lastbutton1 = 0;
+        int lastbutton2 = 0;
+        int lastbutton3 = 0;
+        int lastbutton4 = 0;
+        int lastbutton5 = 0;
+        int lastbutton6 = 0;
 
-    int lastbutton7 = 0;
-    int lastbutton8 = 0;
-    int lastbutton9 = 0;
-    int lastbutton10 = 0;
-    int lastbutton11 = 0;
-    int lastbutton12 = 0;
+        int lastbutton7 = 0;
+        int lastbutton8 = 0;
+        int lastbutton9 = 0;
+        int lastbutton10 = 0;
+        int lastbutton11 = 0;
+        int lastbutton12 = 0;
 
-/*Faders*/
-    int lastfader1 = 0;
-    int lastfader2 = 0;
-    int lastfader3 = 0;
-    int lastfader4 = 0;
-    int lastfader5 = 0;
-    int lastfader6 = 0;
+        int lastbuttonA = 0;
+        int lastbuttonB = 0;
+        int lastbuttonSequencer = 0;
+        int lastbuttonAux = 0;
+        int lastbuttonDelete = 0;
+        int lastbuttonStore = 0;
+        int lastbuttonModify = 0;
+        int lastbuttonSoundUp = 0;
+        int lastbuttonSoundDown = 0;
+        int lastbuttonDBO = 0;
+
+        int lastbuttonChaserMode = 0;
+        int lastbuttonChaserModeUp = 0;
+        int lastbuttonChaserModeDown = 0;
+        int lastbuttonChaserModeStop = 0;
+        int lastbuttonChaserModeStart = 0;
+        int lastbuttonFlashMode = 0;
+        int lastbuttonFlashUp = 0;
+        int lastbuttonFlashDown = 0;
+        int lastbuttonAudioMode = 0;
+        int lastbuttonAMUp = 0;
+        int lastbuttonAMDown = 0;
+
+        int valbDBO = 0;
+        int valbAudioMode = 0;
+        int valbAMUp = 0;
+        int valbAMDown = 0;
+
+        int lastbDBO = 0;
+        int lastbAudioMode = 0;
+        int lastbAMUp = 0;
+        int lastbAMDown = 0;
+
+        int statebDBO = 0;
+        int statebAudioMode = 0;
+        int statebAMUp = 0;
+        int statebAMDown = 0;
+
+        int midibDBO = 0;
+        int midibAudioMode = 0;
+        int midibAMUp = 0;
+        int midibAMDown = 0;
+
     
-    int lastfader7 = 0;
-    int lastfader8 = 0;
-    int lastfader9 = 0;
-    int lastfader10 = 0;
-    int lastfader11 = 0;
-    int lastfader12 = 0;
 
-    int lastfader13 = 0;
-    int lastfader14 = 0;
-    int lastfader15 = 0;
-    int lastfader16 = 0;
-    int lastfader17 = 0;
-    int lastfader18 = 0;
+    /*Faders*/
+        int lastfader1 = 0;
+        int lastfader2 = 0;
+        int lastfader3 = 0;
+        int lastfader4 = 0;
+        int lastfader5 = 0;
+        int lastfader6 = 0;
+        
+        int lastfader7 = 0;
+        int lastfader8 = 0;
+        int lastfader9 = 0;
+        int lastfader10 = 0;
+        int lastfader11 = 0;
+        int lastfader12 = 0;
 
-    int lastfader19 = 0;
-    int lastfader20 = 0;
-    int lastfader21 = 0;
-    int lastfader22 = 0;
-    int lastfader23 = 0;
-    int lastfader24 = 0;
+        int lastfader13 = 0;
+        int lastfader14 = 0;
+        int lastfader15 = 0;
+        int lastfader16 = 0;
+        int lastfader17 = 0;
+        int lastfader18 = 0;
+
+        int lastfader19 = 0;
+        int lastfader20 = 0;
+        int lastfader21 = 0;
+        int lastfader22 = 0;
+        int lastfader23 = 0;
+        int lastfader24 = 0;
+
+        int lastfaderA = 0;
+        int lastfaderB = 0;
+        int lastGrandMaster = 0;
+
+        int lastfaderSequencer = 0;
+        int lastfaderAux = 0;
+        int lastfaderFade = 0;
+        int lastfaderSpeed = 0;
+
+        int valfGM = 0;
+        int lastfGM = 0;
+        int midifGM = 0;
 
 /*Unions*/
     union data_FaderA
@@ -187,12 +259,27 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 
 
 void setup() {
-  Wire.begin(); // Join I2C bus with address #1
-  Wire.setClock(400000); // Set I2C clock speed to 400kHz
+    /*Wire*/
+        Wire.begin(); // Join I2C bus with address #1
+        Wire.setClock(400000); // Set I2C clock speed to 400kHz
 
-  MIDI.begin();
-  Serial.begin(115200);
+    /*MIDI*/
+        MIDI.begin();
 
+    /*Serial*/
+        Serial.begin(115200);
+
+    /*pinMode*/
+        pinMode(DBO, INPUT_PULLUP);
+
+        pinMode(ButtonAudioMode, INPUT_PULLUP);
+        pinMode(ButtonAMUp, INPUT_PULLUP);
+        pinMode(ButtonAMDown, INPUT_PULLUP);
+
+        pinMode(Display_DMX1, OUTPUT);
+        pinMode(Display_DMX2, OUTPUT);
+        pinMode(Display_DMX3, OUTPUT);
+        pinMode(Display_DMX4, OUTPUT);
 }
 
 void loop() {
@@ -532,7 +619,73 @@ void loop() {
             lastbuttonAux = midibother.midibAux;
         }
 
+    /*Local Ports Uno*/
+        /*Read Buttons*/
+            if(valbDBO != lastbDBO){
+                if(statebDBO != 0){
+                    statebDBO = 0;
+                }else{
+                    statebDBO = 1;
+                }
+                midibDBO = map(statebDBO, 0, 1, 0, 127);
+                lastbDBO = valbDBO;
+            }
+            if(valbAudioMode != lastbAudioMode){
+                if(statebAudioMode != 0){
+                    statebAudioMode = 0;
+                }else{
+                    statebAudioMode = 1;
+                }
+                midibAudioMode = map(statebAudioMode, 0, 1, 0, 127);
+                lastbAudioMode = valbAudioMode;
+            }
+            if(valbAMUp != lastbAMUp){
+                if(statebAMUp != 0){
+                    statebAMUp = 0;
+                }else{
+                    statebAMUp = 1;
+                }
+                midibAMUp = map(statebAMUp, 0, 1, 0, 127);
+                lastbAMUp = valbAMUp;
+            }
+            if(valbAMDown != lastbAMDown){
+                if(statebAMDown != 0){
+                    statebAMDown = 0;
+                }else{
+                    statebAMDown = 1;
+                }
+                midibAMDown = map(statebAMDown, 0, 1, 0, 127);
+                lastbAMDown = valbAMDown;
+            }
 
+        /*Read Faders*/
+            valfGM = analogRead(GrandMaster);
+            if(valfGM != lastfGM){
+                midifGM = map(valfGM, 1023, 0, 0, 127);
+                lastfGM = valfGM;
+            }
+
+        /*Write Midi*/
+        if(midibDBO != lastbDBO){
+            MIDI.sendNoteOn(3, midibDBO, 27);
+            lastbDBO = midibDBO;
+        }
+        if(midibAudioMode != lastbAudioMode){
+            MIDI.sendNoteOn(3, midibAudioMode, 20);
+            lastbAudioMode = midibAudioMode;
+        }
+        if(midibAMUp != lastbAMUp){
+            MIDI.sendNoteOn(3, midibAMUp, 21);
+            lastbAMUp = midibAMUp;
+        }
+        if(midibAMDown != lastbAMDown){
+            MIDI.sendNoteOn(3, midibAMDown, 22);
+            lastbAMDown = midibAMDown;
+        }
+        if(midifGM != lastfGM){
+            MIDI.sendNoteOn(3, midifGM, 0);
+            lastfGM = midifGM;
+        }
 }
 
 
