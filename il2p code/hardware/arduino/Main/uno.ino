@@ -116,16 +116,11 @@ MIDI_CREATE_DEFAULT_INSTANCE();
     };
     data_OtherA megaaother;
 
-    union data_B
+    union data_FaderB
     {
     struct
     {
-        int midib7;
-        int midib8;
-        int midib9;
-        int midib10;
-        int midib11;
-        int midib12;
+        int typeFader;
 
         int midif7;
         int midif8;
@@ -141,10 +136,55 @@ MIDI_CREATE_DEFAULT_INSTANCE();
         int midif23;
         int midif24;
 
+        int midifSequencer;
+        int midifAux;
     };
-    byte bytes[36];
+    byte bytes[32];
     };
-    data_B megab;
+    data_FaderB megabfader;
+
+    union data_OtherB
+    {
+    struct
+    {
+        int typeOther;
+
+        int midib7;
+        int midib8;
+        int midib9;
+        int midib10;
+        int midib11;
+        int midib12;
+
+        int midibA;
+        int midibB;
+        int midibSequencer;
+        int midibAux;
+
+        int midibChaserMode;
+        int midibChaserModeUp;
+        int midibChaserModeDown;
+        int midibChaserModeStop;
+        int midibChaserModeStart;
+
+    };
+    byte bytes[30];
+    };
+    data_OtherB megabother;
+
+    union data_SubmasterB
+    {
+    struct
+    {
+        int typeSubmaster;
+
+        int midifA;
+        int midifB;
+    };
+    byte bytes[6];
+    };
+    data_SubmasterB megabsubmaster;
+
 
 void setup() {
   Wire.begin(); // Join I2C bus with address #1
@@ -169,8 +209,26 @@ void loop() {
         Serial.print(" ");
     }
     Serial.println();
-    //getData2();
-    //delay(500);
+    
+    getData2();
+    Serial.println("Fader Data Received:");
+    for (int i = 0; i < sizeof(megabfader.bytes); i++) {
+        Serial.print(megabfader.bytes[i]);
+        Serial.print(" ");
+    }
+    Serial.println();
+    Serial.println("Other Data Received:");
+    for (int i = 0; i < sizeof(megabother.bytes); i++) {
+        Serial.print(megabother.bytes[i]);
+        Serial.print(" ");
+    }
+    Serial.println();
+    Serial.println("Submaster Data Received:");
+    for (int i = 0; i < sizeof(megabsubmaster.bytes); i++) {
+        Serial.print(megabsubmaster.bytes[i]);
+        Serial.print(" ");
+    }
+    Serial.println();
 
     /*Midi*/
         /*MegaA*/
@@ -264,96 +322,97 @@ void loop() {
             MIDI.sendNoteOn(17, megaafader.midif18, 2);
             lastfader18 = megaafader.midif18;
         }
+
         /*MegaB*/
-        if(megab.midib7 != lastbutton7)
+        if(megabother.midib7 != lastbutton7)
         {
-            MIDI.sendNoteOn(6, megab.midib7, 1);
-            lastbutton7 = megab.midib7;
+            MIDI.sendNoteOn(6, megabother.midib7, 1);
+            lastbutton7 = megabother.midib7;
         }
-        if(megab.midib8 != lastbutton8)
+        if(megabother.midib8 != lastbutton8)
         {
-            MIDI.sendNoteOn(7, megab.midib8, 1);
-            lastbutton8 = megab.midib8;
+            MIDI.sendNoteOn(7, megabother.midib8, 1);
+            lastbutton8 = megabother.midib8;
         }
-        if(megab.midib9 != lastbutton9)
+        if(megabother.midib9 != lastbutton9)
         {
-            MIDI.sendNoteOn(8, megab.midib9, 1);
-            lastbutton9 = megab.midib9;
+            MIDI.sendNoteOn(8, megabother.midib9, 1);
+            lastbutton9 = megabother.midib9;
         }
-        if(megab.midib10 != lastbutton10)
+        if(megabother.midib10 != lastbutton10)
         {
-            MIDI.sendNoteOn(9, megab.midib10, 1);
-            lastbutton10 = megab.midib10;
+            MIDI.sendNoteOn(9, megabother.midib10, 1);
+            lastbutton10 = megabother.midib10;
         }
-        if(megab.midib11 != lastbutton11)
+        if(megabother.midib11 != lastbutton11)
         {
-            MIDI.sendNoteOn(10, megab.midib11, 1);
-            lastbutton11 = megab.midib11;
+            MIDI.sendNoteOn(10, megabother.midib11, 1);
+            lastbutton11 = megabother.midib11;
         }
-        if(megab.midib12 != lastbutton12)
+        if(megabother.midib12 != lastbutton12)
         {
-            MIDI.sendNoteOn(11, megab.midib12, 1);
-            lastbutton12 = megab.midib12;
+            MIDI.sendNoteOn(11, megabother.midib12, 1);
+            lastbutton12 = megabother.midib12;
         }
-        if(megab.midif7 != lastfader7)
+        if(megabfader.midif7 != lastfader7)
         {
-            MIDI.sendNoteOn(6, megab.midif7, 2);
-            lastfader7 = megab.midif7;
+            MIDI.sendNoteOn(6, megabfader.midif7, 2);
+            lastfader7 = megabfader.midif7;
         }
-        if(megab.midif8 != lastfader8)
+        if(megabfader.midif8 != lastfader8)
         {
-            MIDI.sendNoteOn(7, megab.midif8, 2);
-            lastfader8 = megab.midif8;
+            MIDI.sendNoteOn(7, megabfader.midif8, 2);
+            lastfader8 = megabfader.midif8;
         }
-        if(megab.midif9 != lastfader9)
+        if(megabfader.midif9 != lastfader9)
         {
-            MIDI.sendNoteOn(8, megab.midif9, 2);
-            lastfader9 = megab.midif9;
+            MIDI.sendNoteOn(8, megabfader.midif9, 2);
+            lastfader9 = megabfader.midif9;
         }
-        if(megab.midif10 != lastfader10)
+        if(megabfader.midif10 != lastfader10)
         {
-            MIDI.sendNoteOn(9, megab.midif10, 2);
-            lastfader10 = megab.midif10;
+            MIDI.sendNoteOn(9, megabfader.midif10, 2);
+            lastfader10 = megabfader.midif10;
         }
-        if(megab.midif11 != lastfader11)
+        if(megabfader.midif11 != lastfader11)
         {
-            MIDI.sendNoteOn(10, megab.midif11, 2);
-            lastfader11 = megab.midif11;
+            MIDI.sendNoteOn(10, megabfader.midif11, 2);
+            lastfader11 = megabfader.midif11;
         }
-        if(megab.midif12 != lastfader12)
+        if(megabfader.midif12 != lastfader12)
         {
-            MIDI.sendNoteOn(11, megab.midif12, 2);
-            lastfader12 = megab.midif12;
+            MIDI.sendNoteOn(11, megabfader.midif12, 2);
+            lastfader12 = megabfader.midif12;
         }
-        if(megab.midif19 != lastfader19)
+        if(megabfader.midif19 != lastfader19)
         {
-            MIDI.sendNoteOn(18, megab.midif19, 2);
-            lastfader19 = megab.midif19;
+            MIDI.sendNoteOn(18, megabfader.midif19, 2);
+            lastfader19 = megabfader.midif19;
         }
-        if(megab.midif20 != lastfader20)
+        if(megabfader.midif20 != lastfader20)
         {
-            MIDI.sendNoteOn(19, megab.midif20, 2);
-            lastfader20 = megab.midif20;
+            MIDI.sendNoteOn(19, megabfader.midif20, 2);
+            lastfader20 = megabfader.midif20;
         }
-        if(megab.midif21 != lastfader21)
+        if(megabfader.midif21 != lastfader21)
         {
-            MIDI.sendNoteOn(20, megab.midif21, 2);
-            lastfader21 = megab.midif21;
+            MIDI.sendNoteOn(20, megabfader.midif21, 2);
+            lastfader21 = megabfader.midif21;
         }
-        if(megab.midif22 != lastfader22)
+        if(megabfader.midif22 != lastfader22)
         {
-            MIDI.sendNoteOn(21, megab.midif22, 2);
-            lastfader22 = megab.midif22;
+            MIDI.sendNoteOn(21, megabfader.midif22, 2);
+            lastfader22 = megabfader.midif22;
         }
-        if(megab.midif23 != lastfader23)
+        if(megabfader.midif23 != lastfader23)
         {
-            MIDI.sendNoteOn(22, megab.midif23, 2);
-            lastfader23 = megab.midif23;
+            MIDI.sendNoteOn(22, megabfader.midif23, 2);
+            lastfader23 = megabfader.midif23;
         }
-        if(megab.midif24 != lastfader24)
+        if(megabfader.midif24 != lastfader24)
         {
-            MIDI.sendNoteOn(23, megab.midif24, 2);
-            lastfader24 = megab.midif24;
+            MIDI.sendNoteOn(23, megabfader.midif24, 2);
+            lastfader24 = megabfader.midif24;
         }
 }
 
@@ -382,24 +441,44 @@ void getData1()
     }}
 }
 
-void getData2() {
-  // Request 36 bytes from Mega2 (Slave Address 3)
-  Wire.requestFrom(3, sizeof(megab.bytes));
-  if (Wire.available() == sizeof(megab.bytes)) {
-    for (unsigned int i = 0; i < sizeof(megab.bytes); i++) {
-      megab.bytes[i] = Wire.read(); // Read each byte into the union
-    }
-
-    // Debugging: Print the received data
-    Serial.println("Data received from Mega2:");
-    for (unsigned int i = 0; i < sizeof(megab.bytes); i++) {
-      Serial.print(megab.bytes[i]);
-      Serial.print(" ");
-    }
-    Serial.println();
-  } else {
-    Serial.println("Failed to receive data from Mega2");
-  }
+void getData2()
+{
+    Wire.requestFrom(SLAVE_Mega2, sizeof(megabfader));
+    if (Wire.available() == sizeof(megabfader)) {
+        Wire.readBytes(megabfader.bytes, sizeof(megabfader));
+    }else{
+        if (Wire.available() == sizeof(megabother)) {
+        Wire.readBytes(megabother.bytes, sizeof(megabother));
+        }else{
+            if(Wire.available() == sizeof(megabsubmaster)) {
+                Wire.readBytes(megabsubmaster.bytes, sizeof(megabsubmaster));
+            }else{
+                Serial.println("Failed to receive data from Mega2");
+    }}}
+    delay(100);
+    Wire.requestFrom(SLAVE_Mega2, sizeof(megabother));
+    if (Wire.available() == sizeof(megabother)) {
+        Wire.readBytes(megabother.bytes, sizeof(megabother));
+    }else{
+        if (Wire.available() == sizeof(megabfader)) {
+        Wire.readBytes(megabfader.bytes, sizeof(megabfader));
+        }else{
+            if(Wire.available() == sizeof(megabsubmaster)) {
+                Wire.readBytes(megabsubmaster.bytes, sizeof(megabsubmaster));
+            }else{
+                Serial.println("Failed to receive data from Mega2");
+    }}}
+    delay(100);
+    Wire.requestFrom(SLAVE_Mega2, sizeof(megabsubmaster));
+    if (Wire.available() == sizeof(megabsubmaster)) {
+        Wire.readBytes(megabsubmaster.bytes, sizeof(megabsubmaster));
+    }else{
+        if (Wire.available() == sizeof(megabfader)) {
+        Wire.readBytes(megabfader.bytes, sizeof(megabfader));
+        }else{
+            if(Wire.available() == sizeof(megabother)) {
+                Wire.readBytes(megabother.bytes, sizeof(megabother));
+            }else{
+                Serial.println("Failed to receive data from Mega2");
+    }}}
 }
-
-
