@@ -10,13 +10,13 @@ Current Versions:
 
   Firmeware Version:
   
-    UNO:   1.8.1 pre-alpha
-    MegaA: 1.8.1 pre-alpha
-    MegaB: 1.8.1 pre-alpha
+    UNO:   1.8.3 pre-alpha
+    MegaA: 1.8.3 pre-alpha
+    MegaB: 1.8.3 pre-alpha
 
   OS-Version:
   
-    1.1 pre-alpha (based on Win10 Pro)
+    1.0 pre-alpha (based on Win10 Pro)
 
   WebOS Version:
   
