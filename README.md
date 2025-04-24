@@ -25,7 +25,10 @@ Current Versions:
   Library Versions:
 
     DigitDisplay: 2.1.1 beta
+    IlluminationDisplay: 1.0.1 pre-alpha
 
 ---Notes---
 
 To replicate you must install the custom libraries (digitdisplay) as well as (IlluminationDisplay), which can be found in the files.
+
+IMPORTANT: the library (IlluminationDisplay) is currently not complete and won't function!
