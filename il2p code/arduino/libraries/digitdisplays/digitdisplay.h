@@ -2,7 +2,7 @@
   digitdisplay.h - Library for 7-digit-displays
   Created by Liam A. Clark, November 2, 2023.
   Updated by Liam A. Clark, April 15, 2025.
-  Version: 2.1.1 beta
+  Version: 2.2.1 beta
 */
 
 #ifndef DIGITDISPLAY_H

@@ -2,7 +2,7 @@
   digitdisplay.cpp - Library for 7-digit-displays
   Created by Liam A. Clark, November 2, 2023.
   Updated by Liam A. Clark, April 15, 2025.
-  Version: 2.1.1 beta
+  Version: 2.2.1 beta
 */
 
 #include "digitdisplay.h"
@@ -33,7 +33,7 @@ void DigitDisplay::begin() {
 // 2: 1,2,4,5,7
 // 3: 1,2,3,4,7
 // 4: 2,3,6,7
-// 5: 1,3,4,5,7
+// 5: 1,3,4,6,7
 // 6: 1,3,4,5,6,7
 // 7: 1-3
 // 8: 1-7
@@ -90,8 +90,8 @@ void DigitDisplay::displayNumber(int number){
         digitalWrite(_pin2, LOW);
         digitalWrite(_pin3, HIGH);
         digitalWrite(_pin4, HIGH);
-        digitalWrite(_pin5, HIGH);
-        digitalWrite(_pin6, LOW);
+        digitalWrite(_pin5, LOW);
+        digitalWrite(_pin6, HIGH);
         digitalWrite(_pin7, HIGH);
     }
     if(number == 6){
