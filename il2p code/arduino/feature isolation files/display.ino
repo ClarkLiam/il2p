@@ -11,7 +11,7 @@ DigitDisplay digitdisplay1;
 
 
 void setup() {
-    digitdisplay1 = DigitDisplay(2, 3, 4, 5, 6, 7, 8);
+    digitdisplay1 = DigitDisplay(0, 1, 2, 3, 4, 5, 6);
     digitdisplay1.begin();
 }
 void.loop(){
