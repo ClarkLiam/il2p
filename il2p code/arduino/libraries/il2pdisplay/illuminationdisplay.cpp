@@ -2,7 +2,7 @@
   illuminationdisplay.cpp - Library for CommandWing Display Section on the Illumination2PRO Consoles
   Created by Liam A. Clark, April 24, 2025.
   Updated by Liam A. Clark, April 24, 2025.
-  Version: 1.0.1 pre-alpha
+  Version: 1.0.2 alpha
 */
 
 #include "illuminationdisplay.h"
