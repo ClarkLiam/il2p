@@ -9,7 +9,6 @@
 #define DIGITDISPLAY_H
 
 #include <Arduino.h>
-#include <digitdisplay.cpp>
 
 // Library Pin Specifications are for the Model "Hawlett-Paclard(HP) 5082-7653"
 
@@ -34,14 +33,14 @@
 
 
 class DigitDisplay {
-    public:
-        DigitDisplay(int pin1, int pin2, int pin3, int pin4, int pin5, int pin6, int pin7);
-        void begin();
-        void displayNumber(int number);
-        void displayOther(int element_id);
-        void clearDisplay();
-    private:
-        int _pin1, _pin2, _pin3, _pin4, _pin5, _pin6, _pin7;
+public:
+    DigitDisplay(int pin1, int pin2, int pin3, int pin4, int pin5, int pin6, int pin7);
+    void begin();
+    void displayNumber(int number);
+    void displayOther(int element_id);
+    void clearDisplay();
+private:
+    int _pin1, _pin2, _pin3, _pin4, _pin5, _pin6, _pin7;
 };
 
 #endif
