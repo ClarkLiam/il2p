@@ -24,7 +24,7 @@ Current Versions:
 
   Library Versions:
 
-    DigitDisplay: 2.1.1 beta
+    DigitDisplay: 2.2.1 beta
     IlluminationDisplay: 1.0.2 alpha
 
 ---Notes---
