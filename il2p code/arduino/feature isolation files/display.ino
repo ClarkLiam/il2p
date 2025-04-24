@@ -3,7 +3,7 @@
 /*Author: Liam Clark */
 /*Version: 1.0.5*/
 
-// Tests a tow DigitDisplay connected to the ports 0, 1, 2, 3, 4, 5, 6, and 7, 8, 9, 10, 11, 12, 13 as specified in the library
+// Tests two DigitDisplays connected to the ports 0, 1, 2, 3, 4, 5, 6, and 7, 8, 9, 10, 11, 12, 13 as specified in the library
 
 #include <digitdisplay.h>
 
