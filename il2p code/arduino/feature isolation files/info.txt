@@ -1,0 +1,7 @@
+Files provided in this folder are meant to test single features of the codebase.
+They are all coded to run on a single arduino uno board if not specified otherwise.
+
+Feature Isolation Files provided:
+
+display.iso - Tests a single digit display on the control wing
+
