@@ -9,6 +9,7 @@
 #define DIGITDISPLAY_H
 
 #include <Arduino.h>
+#include <digitdisplay.cpp>
 
 // Library Pin Specifications are for the Model "Hawlett-Paclard(HP) 5082-7653"
 
