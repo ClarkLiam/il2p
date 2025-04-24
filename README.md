@@ -28,4 +28,4 @@ Current Versions:
 
 ---Notes---
 
-To replicate you must install the custom library (digitdisplay), that can be found in the files.
+To replicate you must install the custom libraries (digitdisplay) as well as (IlluminationDisplay), which can be found in the files.
