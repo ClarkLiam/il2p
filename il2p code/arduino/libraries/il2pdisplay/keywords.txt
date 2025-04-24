@@ -1,5 +1,11 @@
 IlDisplay       KEYWORD1
 begin           KEYWORD2
-show            KEYWORD2
-clearElement    KEYWORD2
-clearAll        KEYWORD2
+Channel         KEYWORD2
+Flash           KEYWORD2
+Solo            KEYWORD2
+Preview         KEYWORD2
+Chaser          KEYWORD2
+Next            KEYWORD2
+Prog            KEYWORD2
+DMX             KEYWORD2
+group           KEYWORD2
