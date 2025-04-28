@@ -1,4 +1,4 @@
-Illumination2PRO
+# Illumination2PRO
 
 Project to turn an old ETR Luna24 Lightingdesk into a modern custom build MIDI Lighting-Controler to use with QLC+ (or any other MIDI Software).
 
@@ -6,27 +6,27 @@ Repository contains the custom software for the controlling PC as well as the co
 At some point there may also be custom 3D CAD files available.
 Currently the following hardware is in use: 2x Arduino Mega (by Elegoo), 1x Arduino Uno
 
-Current Versions:
+## Current Versions:
 
-  Firmeware Version:
+  ### Firmeware Version:
   
     UNO:   1.8.3 pre-alpha
     MegaA: 1.8.3 pre-alpha
     MegaB: 1.8.3 pre-alpha
 
-  OS-Version:
+  ### OS-Version:
   
     1.0 pre-alpha (based on Win10 Pro)
 
-  WebOS Version:
+  ### WebOS Version:
   
     1.1.5 pre-alpha
 
-  Library Versions:
+  ### Library Versions:
 
     DigitDisplay: 2.2.1 beta
     IlluminationDisplay: 1.0.2 alpha
 
----Notes---
+## ---Notes---
 
 To replicate you must install the custom libraries (digitdisplay) as well as (IlluminationDisplay), which can be found in the files.
