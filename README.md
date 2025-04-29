@@ -29,4 +29,5 @@ Currently the following hardware is in use: 2x Arduino Mega (by Elegoo), 1x Ardu
 
 ## ---Notes---
 
-To replicate you must install the custom libraries (digitdisplay) as well as (IlluminationDisplay), which can be found in the files.
+To replicate you must install the custom libraries (digitdisplay) as well as (IlluminationDisplay), which can be found in the files or in a seperate repository on my GitHub
+
