@@ -1,5 +1,0 @@
-DigitDisplay    KEYWORD1
-begin           KEYWORD2
-displayNumber   KEYWORD2
-displayOther    KEYWORD2
-clearDisplay    KEYWORD2
