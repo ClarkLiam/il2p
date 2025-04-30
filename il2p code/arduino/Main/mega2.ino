@@ -249,6 +249,31 @@ const int SLAVE_Mega2 = 3;
     };
     data_SubmasterB megabsubmaster;
 
+    union data_Display
+    {
+    struct
+    {
+        int display_channel;
+        int display_flash;
+        int display_solo;
+        int display_preview;
+        int display_DMX;
+        int display_segment1;
+        int display_segment2;
+        int display_segment3;
+        int display_segment4;
+        int display_segment5;
+        int display_segment6;
+        int display_chaser;
+        int display_prog;
+        int display_next;
+        int display_groupon;
+    };
+    byte bytes[30];
+    };
+    data_Display display;
+
+
 void setup()
 {
     /*Serial*/
