@@ -29,6 +29,27 @@ IlDisplay display(13, 12, 11, 10, 100, 100, 100, 6, 7, 8, 9, 100);
 #define Display_DMX4 9
 
 /*Variables*/
+    /*States for Display*/
+        int dmx1 = 0;
+        int dmx2 = 0;
+        int dmx3 = 0;
+        int dmx4 = 0;
+
+        int display_channel = 0;
+        int display_flash = 0;
+        int display_solo = 0;
+        int display_preview = 0;
+        int display_chaser = 0;
+        int display_next = 0;
+        int display_prog = 0;
+
+        int display_segment1 = 0;
+        int display_segment2 = 0;
+        int display_segment3 = 0;
+        int display_segment4 = 0;
+        int display_segment5 = 0;
+        int display_segment6 = 0;
+
     /*Buttons*/
         int lastbutton1 = 0;
         int lastbutton2 = 0;
@@ -298,6 +319,8 @@ void setup() {
 
     /*Display*/
         display.begin();
+
+        display.display_groupon = 1;
 
     /*pinMode*/
         pinMode(DBO, INPUT_PULLUP);
@@ -780,4 +803,43 @@ void getData2()
             }else{
                 Serial.println("Failed to receive data from Mega2");
     }}}
+}
+
+void displayControl(){
+    dmxDisplay();
+
+
+}
+
+void dmxDisplay(){
+    if(dmx1 == 0 && dmx2 == 0 && dmx3 == 0 && dmx4 == 0){
+        display.display_DMX = 0;
+    }else{
+        if(dmx1 == 1 && dmx2 == 1 && dmx3 == 1 && dmx4 == 1){
+            display.display_DMX = 5;
+        }else{
+            if(dmx1 == 1 && dmx2 == 0 && dmx3 == 0 && dmx4 == 0){
+                display.display_DMX = 1;
+            }else{
+                if(dmx1 == 0 && dmx2 == 1 && dmx3 == 0 && dmx4 == 0){
+                    display.display_DMX = 2;
+                }else{
+                    if(dmx1 == 0 && dmx2 == 0 && dmx3 == 1 && dmx4 == 0){
+                        display.display_DMX = 3;
+                    }else{
+                        if(dmx1 == 0 && dmx2 == 0 && dmx3 == 0 && dmx4 == 1){
+                            display.display_DMX = 4;
+                        }else{
+                            if(dmx1 == 1 && dmx2 == 1 && dmx3 == 0 && dmx4 == 0){
+                                display.display_DMX = 6;
+                            }else{ 
+                                if(dmx1 == 1 && dmx2 == 1 && dmx3 == 1 && dmx4 == 0){
+                                    display.display_DMX = 7;
+                            }    
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
