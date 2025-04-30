@@ -8,6 +8,14 @@ const int SLAVE_UNO = 1;
 const int SLAVE_Mega1 = 2;
 const int SLAVE_Mega2 = 3;
 
+#include <illuminationdisplay.h>
+IlDisplay display(100, 100, 100, 100, 51, 100, 53, 100, 100, 100, 100, 100);
+
+#include <digitdisplay.h>
+DigitDisplay digitDisplay1(30, 31, 32, 33, 34, 35, 36);
+DigitDisplay digitDisplay2(37, 38, 39, 40, 41, 42, 43);
+DigitDisplay digitDisplay3(44, 45, 46, 47, 48, 49, 50);
+
 /*Definations*/
     /*Pins*/
     #define fader1 A0
@@ -265,6 +273,11 @@ void setup()
         Wire.begin(SLAVE_Mega1);    // Join I2C bus with address #2
         Wire.setClock(400000); // Set I2C clock speed to 400kHz
         Wire.onRequest(sendData);
+    /*Display*/
+        display.begin();
+        digitDisplay1.begin();
+        digitDisplay2.begin();
+        digitDisplay3.begin();
 
     /*pinMode*/
         pinMode(button1, INPUT_PULLUP);

@@ -11,6 +11,9 @@ const int SLAVE_Mega2 = 3;
 #include <MIDI.h>
 MIDI_CREATE_DEFAULT_INSTANCE();
 
+#include <illuminationdisplay.h>
+IlDisplay display(13, 12, 11, 10, 100, 100, 100, 6, 7, 8, 9, 100);
+
 /*Definations*/
 #define GrandMaster A0
 
@@ -293,6 +296,9 @@ void setup() {
     /*Serial*/
         Serial.begin(115200);
 
+    /*Display*/
+        display.begin();
+
     /*pinMode*/
         pinMode(DBO, INPUT_PULLUP);
 
@@ -300,10 +306,7 @@ void setup() {
         pinMode(ButtonAMUp, INPUT_PULLUP);
         pinMode(ButtonAMDown, INPUT_PULLUP);
 
-        pinMode(Display_DMX1, OUTPUT);
-        pinMode(Display_DMX2, OUTPUT);
-        pinMode(Display_DMX3, OUTPUT);
-        pinMode(Display_DMX4, OUTPUT);
+
 }
 
 void loop() {
