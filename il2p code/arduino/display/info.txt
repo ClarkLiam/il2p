@@ -1,0 +1,27 @@
+Union & Values:
+
+union data_Display
+    {
+    struct
+    {
+        int display_channel;            ValueOn: 1; ValueOff: 0;
+        int display_flash;              ValueOn: 1; ValueOff: 0;
+        int display_solo;               ValueOn: 1; ValueOff: 0;
+        int display_preview;            ValueOn: 1; ValueOff: 0;
+        int display_DMX;                DMX1On: 1;  DMX2On: 2; DMX3On: 3; DMX4On: 4;
+                                        DMXAllOn: 5; DMXOff: 0;
+                                        DMX1+2On: 6; DMX1+2+3On: 7;
+        int display_segment1;           Clear: 100; Numbers: 0-9; Other: 10-19;
+        int display_segment2;           Clear: 100; Numbers: 0-9; Other: 10-19;
+        int display_segment3;           Clear: 100; Numbers: 0-9; Other: 10-19;
+        int display_segment4;           Clear: 100; Numbers: 0-9; Other: 10-19;
+        int display_segment5;           Clear: 100; Numbers: 0-9; Other: 10-19;
+        int display_segment6;           Clear: 100; Numbers: 0-9; Other: 10-19;
+        int display_chaser;             ValueOn: 1; ValueOff: 0;
+        int display_prog;               ValueOn: 1; ValueOff: 0;
+        int display_next;               ValueOn: 1; ValueOff: 0;
+        int display_groupon;            ValueOn: 1; ValueOff: 0;
+    };
+    byte bytes[30];
+    };
+    data_Display display;
