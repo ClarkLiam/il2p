@@ -4,4 +4,4 @@ They are all coded to run on a single arduino uno board if not specified otherwi
 Feature Isolation Files provided:
 
 display.ino - Tests a single digit display on the control wing
-
+midi.ino - Tests the midi communication 
