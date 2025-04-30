@@ -24,7 +24,7 @@ Currently the following hardware is in use: 2x Arduino Mega (by Elegoo), 1x Ardu
 
   ### Library Versions:
 
-    DigitDisplay: 2.2.1 beta
+    DigitDisplay: 2.2.3 beta
     IlluminationDisplay: 1.0.2 alpha
 
 ## ---Notes---
