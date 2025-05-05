@@ -289,7 +289,6 @@ IlDisplay display(13, 12, 11, 10, 100, 100, 100, 6, 7, 8, 9, 100);
         int display_flash;
         int display_solo;
         int display_preview;
-        int display_DMX;
         int display_segment1;
         int display_segment2;
         int display_segment3;
@@ -301,7 +300,7 @@ IlDisplay display(13, 12, 11, 10, 100, 100, 100, 6, 7, 8, 9, 100);
         int display_next;
         int display_groupon;
     };
-    byte bytes[30];
+    byte bytes[28];
     };
     data_Display display;
 
@@ -808,38 +807,111 @@ void getData2()
 void displayControl(){
     dmxDisplay();
 
+    display.display_segment1 = display_segment1;
+    display.display_segment2 = display_segment2;
+    display.display_segment3 = display_segment3;
+    display.display_segment4 = display_segment4;
+    display.display_segment5 = display_segment5;
+    display.display_segment6 = display_segment6;
 
+    modeDisplay(0); //modes 0 thru 3
+    progDisplay(0); //Program Mode?
 }
 
 void dmxDisplay(){
     if(dmx1 == 0 && dmx2 == 0 && dmx3 == 0 && dmx4 == 0){
-        display.display_DMX = 0;
+        digitalWrite(Display_DMX1, LOW);
+        digitalWrite(Display_DMX2, LOW);
+        digitalWrite(Display_DMX3, LOW);
+        digitalWrite(Display_DMX4, LOW);
     }else{
         if(dmx1 == 1 && dmx2 == 1 && dmx3 == 1 && dmx4 == 1){
-            display.display_DMX = 5;
+            digitalRead(Display_DMX1, HIGH);
+            digitalRead(Display_DMX2, HIGH);
+            digitalRead(Display_DMX3, HIGH);
+            digitalRead(Display_DMX4, HIGH);
         }else{
             if(dmx1 == 1 && dmx2 == 0 && dmx3 == 0 && dmx4 == 0){
-                display.display_DMX = 1;
+                digitalRead(Display_DMX1, HIGH);
+                digitalRead(Display_DMX2, LOW);
+                digitalRead(Display_DMX3, LOW);
+                digitalRead(Display_DMX4, LOW);
             }else{
                 if(dmx1 == 0 && dmx2 == 1 && dmx3 == 0 && dmx4 == 0){
-                    display.display_DMX = 2;
+                    digitalRead(Display_DMX1, LOW);
+                    digitalRead(Display_DMX2, HIGH);
+                    digitalRead(Display_DMX3, LOW);
+                    digitalRead(Display_DMX4, LOW);
                 }else{
                     if(dmx1 == 0 && dmx2 == 0 && dmx3 == 1 && dmx4 == 0){
-                        display.display_DMX = 3;
+                        digitalWrite(Display_DMX1, LOW);
+                        digitalWrite(Display_DMX2, LOW);
+                        digitalWrite(Display_DMX3, HIGH);
+                        digitalWrite(Display_DMX4, LOW);
                     }else{
                         if(dmx1 == 0 && dmx2 == 0 && dmx3 == 0 && dmx4 == 1){
-                            display.display_DMX = 4;
+                            digitalWrite(Display_DMX1, LOW);
+                            digitalWrite(Display_DMX2, LOW);
+                            digitalWrite(Display_DMX3, LOW);
+                            digitalWrite(Display_DMX4, HIGH);
                         }else{
                             if(dmx1 == 1 && dmx2 == 1 && dmx3 == 0 && dmx4 == 0){
-                                display.display_DMX = 6;
+                                digitalWrite(Display_DMX1, HIGH);
+                                digitalWrite(Display_DMX2, HIGH);
+                                digitalWrite(Display_DMX3, LOW);
+                                digitalWrite(Display_DMX4, LOW);
                             }else{ 
                                 if(dmx1 == 1 && dmx2 == 1 && dmx3 == 1 && dmx4 == 0){
-                                    display.display_DMX = 7;
+                                    digitalWrite(Display_DMX1, HIGH);
+                                    digitalWrite(Display_DMX2, HIGH);
+                                    digitalWrite(Display_DMX3, HIGH);
+                                    digitalWrite(Display_DMX4, LOW);
                             }    
                         }
                     }
                 }
             }
+        }
+    }
+}
+}
+
+void modeDisplay(int mode){
+    if(mode == 0){
+        display.display_channel = 1;
+        display.display_flash = 0;
+        display.display_solo = 0;
+        display.display_solo = 0;
+    }else{
+        if(mode == 1){
+            display.display_channel = 0;
+            display.display_flash = 1;
+            display.display_solo = 0;
+            display.display_solo = 0;
+        }else{
+            if(mode == 2){
+                display.display_channel = 0;
+                display.display_flash = 0;
+                display.display_solo = 1;
+                display.display_solo = 0;
+            }else{
+                if(mode == 3){
+                    display.display_channel = 0;
+                    display.display_flash = 0;
+                    display.display_solo = 0;
+                    display.display_solo = 1;
+                }
+            }
+        }
+    }
+}
+
+void progDisplay(int state){
+    if(state == 0){
+        display.display_prog = 0;
+    }else{
+        if(state == 1){
+            display.display_prog = 1;
         }
     }
 }

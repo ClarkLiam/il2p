@@ -248,7 +248,7 @@ DigitDisplay digitDisplay3(44, 45, 46, 47, 48, 49, 50);
         int display_flash;
         int display_solo;
         int display_preview;
-        int display_DMX;
+
         int display_segment1;
         int display_segment2;
         int display_segment3;
@@ -260,7 +260,7 @@ DigitDisplay digitDisplay3(44, 45, 46, 47, 48, 49, 50);
         int display_next;
         int display_groupon;
     };
-    byte bytes[30];
+    byte bytes[28];
     };
     data_Display display;
 
