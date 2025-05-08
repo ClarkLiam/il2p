@@ -214,7 +214,6 @@ h1.system {
     margin-top: 0.5vw;
     margin-bottom: 0.5vw;
     overflow: hidden;
-    size-adjust: auto;
     font-size: 0.75em;
 }
 
