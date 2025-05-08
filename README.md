@@ -6,6 +6,9 @@ Repository contains the custom software for the controlling PC as well as the co
 At some point there may also be custom 3D CAD and QLC+ files available.
 Currently the following hardware is in use: 2x Arduino Mega (by Elegoo), 1x Arduino Uno
 
+>[!CAUTION]
+> A lot of the software is incomplete or buggy. Please wait for stable releases bevor trying to recreate this project, or be willing to search for code isuues for hours.
+
 ## Current Versions:
 
   ### Firmeware Version:
@@ -26,10 +29,6 @@ Currently the following hardware is in use: 2x Arduino Mega (by Elegoo), 1x Ardu
 
     DigitDisplay: 2.2.3 beta
     IlluminationDisplay: 1.0.2 alpha
-
->[!CAUTION]
-> A lot of the software is incomplete or buggy. Please wait for stable releases bevor trying to recreate this project, or be willing to search for code isuues for hours.
-
 
 > [!NOTE]
 > To replicate you must install the custom libraries (digitdisplay) as well as (IlluminationDisplay), which can be found in the files or in a seperate repository on my GitHub </br>
