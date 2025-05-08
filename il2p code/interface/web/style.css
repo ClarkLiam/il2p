@@ -164,6 +164,9 @@ h1.system {
     background-color: #000000;
     border-radius: 5px;
     margin-top: 4vw;
+    display: flex;
+    align-items: center;
+    justify-items: center;
 }
 
 .stack {
@@ -205,12 +208,14 @@ h1.system {
 .displaygrid{
     position: relative;
     height: 7vw;
+    width: 33vw;
     display: flex;
     margin: 0.5vw;
     margin-top: 0.5vw;
     margin-bottom: 0.5vw;
     overflow: hidden;
     size-adjust: auto;
+    font-size: 0.75em;
 }
 
 .digitdisplay {
@@ -224,9 +229,32 @@ h1.system {
     flex-direction: column;
     text-align: center;
     justify-content: end;
-    font-size: 0.75em;
+    width: 4vw;
+    overflow: hidden;
 }
 
-.segment1 {
-    
+.middle {
+    width: 20vw;
+
+}
+
+.middle .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 2.5vw;
+    overflow: hidden;
+}
+
+.middle .left {
+    width: 4vw;
+    display: flex;
+
+}
+
+
+.systemdisplay {
+    width: 7vw;
 }
