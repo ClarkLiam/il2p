@@ -23,7 +23,7 @@ Currently the following hardware is in use: 2x Arduino Mega (by Elegoo), 1x Ardu
 
   ### WebOS Version:
   
-    1.1.5 pre-alpha
+    1.2.2 pre-alpha
 
   ### Library Versions:
 
