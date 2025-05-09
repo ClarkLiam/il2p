@@ -218,9 +218,17 @@ h1.system {
 }
 
 .digitdisplay {
-    height: 3vw;
-    width: 2.25vw;
+    height: 2.75vw;
+    width: 2vw;
     background: #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .125vw
+}
+.digitdisplay a{
+    font-size: 1.5em;
+    text-align: center;
 }
 
 .mode {
@@ -230,11 +238,12 @@ h1.system {
     justify-content: end;
     width: 4vw;
     overflow: hidden;
+    font-size: .75em;
 }
 
 .middle {
     width: 20vw;
-
+    position: relative;
 }
 
 .middle .top {
@@ -246,14 +255,154 @@ h1.system {
     height: 2.5vw;
     overflow: hidden;
 }
+.middle .center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 3vw;
+    overflow: hidden;
+}
+.middle .bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 1.5vw;
+    overflow: hidden;
+}
+
+.middle .top .top-left {
+   width: 4vw;
+   font-size: .80em;
+   justify-content: end;
+}
+
+.middle .top .top-center {
+    width: 6vw;
+    font-size: .80em;
+    text-align: left;
+    margin-left: 2vw;
+    margin-top: .80vw;
+    
+}
+
+.middle .top .top-right {
+    width: 8vw;
+    font-size: .80em;
+    margin-top: .80vw;
+}
+.middle .center .mid-left {
+    width: 4vw;
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    margin-left: -1.125vw;
+ }
+ 
+ .middle .center .mid-center {
+     width: 7vw;
+     display: flex;
+     flex-direction: row-reverse;
+ }
+ 
+ .middle .center .mid-right {
+     width: 7vw;
+     display: flex;
+     flex-direction: row-reverse;
+ }
+
+ .middle .bottom .bottom-left {
+    width: 4vw;
+    display: flex;
+    font-style: italic;
+ }
+ 
+ .middle .bottom .bottom-center {
+     width: 7vw;
+     display: flex;
+     flex-direction: row-reverse;
+     font-style: italic;
+ }
+ 
+ .middle .bottom .bottom-right {
+     width: 7vw;
+     display: flex;
+     flex-direction: row-reverse;
+     
+ }
 
 .middle .left {
     width: 4vw;
     display: flex;
-
+    flex-direction: column;
 }
 
+.middle .center, .middle .right, .middle .left {
+    width: 20vw;
+    display: flex;
+    flex-direction: row;
+    margin-left: .5vw;
+    margin-right: .5vw;
+}
 
 .systemdisplay {
     width: 7vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.systemdisplay .top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 2.5vw;
+    overflow: hidden;
+}
+.systemdisplay .center {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 3vw;
+}
+.systemdisplay .bottom {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    text-align: center;
+    height: 1.5vw;
+}
+
+.systemdisplay .top .DMXOUT {
+    width: 7vw;
+    height: 1.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
+    overflow: hidden;
+}
+
+#universe {
+    width: 1vw;
+    height: 1.25vw;
+    background: #222222;
+    margin-left: 0.5vw;
+    
+}
+
+.systemdisplay .top .text{
+    height: 1vw;
+    display: flex;
+    justify-content: space-between;
+    font-size: .80em;
+    margin-left: -1vw;
+}
+
+.systemdisplay .top .text a{
+    margin-left: 0.75vw;
 }
