@@ -295,6 +295,8 @@ void setup()
         digitDisplay5.begin();
         digitDisplay6.begin();
 
+        IlDisplay.begin();
+
     /*pinMode*/
         pinMode(button7, INPUT_PULLUP);
         pinMode(button8, INPUT_PULLUP);
@@ -599,6 +601,13 @@ void loop()
             megabsubmaster.midifAux = map(valfAux, 1023, 0, 0, 127);
             lastfAux = valfAux;
         }
+
+    /*Display*/
+        digitdisplay4.displayNumber(display.display_segment4);
+        digitdisplay5.displayNumber(display.display_segment5);
+        digitdisplay6.displayNumber(display.display_segment6);
+        IlDisplay.Next(display.display_next);
+        IlDisplay.group(display.display_groupon);
 
 }
 
