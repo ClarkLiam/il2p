@@ -307,8 +307,10 @@ IlDisplay display(13, 12, 11, 10, 100, 100, 100, 6, 7, 8, 9, 100);
 
 void setup() {
     /*Wire*/
-        Wire.begin(); // Join I2C bus with address #1
+        Wire.begin(SLAVE_UNO); // Join I2C bus with address #1
         Wire.setClock(400000); // Set I2C clock speed to 400kHz
+        Wire.onRequest(sendData);
+
 
     /*MIDI*/
         MIDI.begin();
@@ -802,6 +804,10 @@ void getData2()
             }else{
                 Serial.println("Failed to receive data from Mega2");
     }}}
+}
+void sendData()
+{
+    Wire.write(display.bytes, sizeof(display));
 }
 
 void displayControl(){

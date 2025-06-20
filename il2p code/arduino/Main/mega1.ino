@@ -319,6 +319,20 @@ void setup()
 
 void loop()
 {
+    /*Get DisplayData*/
+        getData();
+        Serial.println("Display Data Received:");
+        for (int i = 0; i < sizeof(display.bytes); i++) {
+            Serial.print(display.bytes[i]);
+            Serial.print(" ");
+        }
+        Serial.println();
+        Serial.println("Other Data Received:");
+        for (int i = 0; i < sizeof(display.bytes); i++) {
+            Serial.print(display.bytes[i]);
+            Serial.print(" ");
+        }
+
     /*Read Buttons*/
         valb1 = digitalRead(button1);
         valb2 = digitalRead(button2);
@@ -564,5 +578,11 @@ void sendData()
 
 void getData()
 {
-
+    Wire.requestFrom(SLAVE_UNO, sizeof(display));
+    if (Wire.available() == sizeof(display)) {
+        Wire.readBytes(display.bytes, sizeof(display));
+    }else{
+        Serial.println("Failed to receive data from UNO");
+    }
+    delay(100);
 }
