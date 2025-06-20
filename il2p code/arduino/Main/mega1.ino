@@ -279,6 +279,9 @@ void setup()
         digitDisplay2.begin();
         digitDisplay3.begin();
 
+        IlDisplay.begin();
+
+
     /*pinMode*/
         pinMode(button1, INPUT_PULLUP);
         pinMode(button2, INPUT_PULLUP);
@@ -562,6 +565,15 @@ void loop()
             megaafader.midifspeed = map(valfspeed, 1023, 0, 0, 127);
             lastfspeed = valfspeed;
         } 
+
+    /*Display*/
+        digitdisplay1.displayNumber(display.display_segment1);
+        digitdisplay2.displayNumber(display.display_segment2);
+        digitdisplay3.displayNumber(display.display_segment3);
+        IlDisplay.Chaser(display.display_chaser);
+        IlDisplay.Prog(display.display_prog);
+
+
 }
 
 void sendData()
