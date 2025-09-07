@@ -34,6 +34,11 @@ Currently the following hardware is in use: 2x Arduino Mega (by Elegoo), 1x Ardu
 > To replicate you must install the custom libraries (digitdisplay) as well as (IlluminationDisplay), which can be found in the files or in a seperate repository on my GitHub </br>
 >[digitdisplay](https://github.com/ClarkLiam/digitdisplay)
 
+>Other libraries needed are:
+>Wire.h
+>Midi.h
+>[PCF8574.h](https://github.com/xreef/PCF8574_library)
+
 >[!TIP]
 > The Software used to convert the Serial Midi Signal to a real/virtual Midi device on the host PC is called [HairlessMidi](https://projectgus.github.io/hairless-midiserial/). For more information check the developers Page
 
