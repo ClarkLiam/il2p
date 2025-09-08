@@ -47,7 +47,7 @@ LiquidCrystal_I2C lcdB(0x27, 16, 2);
     int menu = 0;
     int submenu = 0;
 
-/*Menu Definations*/
+/*Menu Definitions*/
     
 
 void setup(){
