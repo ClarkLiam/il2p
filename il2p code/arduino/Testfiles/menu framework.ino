@@ -86,6 +86,11 @@ void loop(){
         lastlcdBBtn4 = vallcdBBtn4;
         if(vallcdBBtn4 == LOW){
             menustate = 1;
+            lcdA.clear();
+            lcdB.clear();
+            lcdA.print("Menu:");
+            lcdB.print("Submenu:");
+            delay(500);
             mainmenu(menu, submenu);
         }
     }
@@ -93,9 +98,7 @@ void loop(){
         buttons();
         delay(150);
     }
-
 }
-
 
 /* Menu Options
 Menu -> Run         ->Overview
@@ -112,8 +115,6 @@ Menu -> System      ->Overview
                     ->Board Test
                     ->LED Test
 Menu -> Info */
-
-
 
 void buttons(){
     vallcdABtn1 = pcf8574.digitalRead(lcdABtn1);    //up
@@ -349,6 +350,7 @@ void run_overview(){
 }
 void run_wing(){
     lcdA.print("Run Wing");
+
 }
 void run_fader(){
     lcdA.print("Run Fader");
@@ -358,30 +360,63 @@ void run_programs(){
 }
 
 void settings_display(){
+    lcdA.print("il2p - Screen 1");
+    lcdB.print("il2p - Screen 2");
+    delay(50);
+    lcdA.clear();
+    lcdB.clear();
     lcdA.print("Settings Display");
+    lcdB.print(">Brightness");
+    lcdB.setCursor(0,1);
+    lcdB.print(" Contrast");
 }
 void settings_fader(){
-    lcdA.print("Settings Fader");
+    lcdA.print("Fader Settings");
+    lcdB.print(">Standard");
+    lcdB.setCursor(0,1);
+    lcdB.print(" Precise");
 }
 void settings_buttons(){
-    lcdA.print("Settings Buttons");
+    lcdA.print("Buttons Settings");
+    lcdB.print(">Standard");
+    lcdB.setCursor(0,1);
+    lcdB.print(" Precise");
 }
 void settings_modes(){
-    lcdA.print("Settings Modes");
+    lcdA.print("Modes:");
+    lcdB.print(">Standard");
+    lcdB.setCursor(0,1);
+    lcdB.print(" Programmer");
 }
 
 void system_overview(){
     lcdA.print("System Overview");
+    lcdA.setCursor(0,1);
+    lcdA.print("iP: 127.0.0.1");
+    lcdB.print("Status: OK");
+    lcdB.setCursor(0,1);
+    lcdB.print("Systems: running");
 }
 void system_dmx(){
-    lcdA.print("System DMX");
+    lcdA.print("DMX Settings");
+    lcdB.print("Node1: N/A");
+    lcdB.setCursor(0,1);
+    lcdB.print("Node2: N/A");
 }
 void system_midi(){
-    lcdA.print("System MIDI");
+    lcdA.print("MIDI Settings");
+    lcdB.print("Host: pc-il2p");
+    lcdB.setCursor(0,1);
+    lcdB.print("Connection: N/A");
 }
 void boardtest(){
     lcdA.print("Board Test");
 }
 void screen_info(){
-    lcdA.print("IL2P Info");
+    lcdA.print("illumination2PRO");
+    lcdA.setCursor(0,1);
+    lcdA.print("S/N: LS01859643");
+    lcdB.print("Version: 1.0.3");
+    lcdB.setCursor(0,1);
+    lcdB.print("Release: pre");
 }
