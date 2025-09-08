@@ -10,14 +10,14 @@ Uno, System, 5V,5V, ,
 Uno, System, GND,GND, ,
 Uno, System, GND,GND, ,
 Uno, System, VIN,V In, ,
-Uno, Digital, D13,OUTOUT,Display.Channel,
-Uno, Digital, D12,OUTOUT,Display.Flash,
-Uno, Digital, D11,OUTOUT,Display.Solo,
-Uno, Digital, D10,OUTOUT,Display.Preview,
-Uno, Digital, D9,OUTOUT,Display.DMX.4,
-Uno, Digital, D8,OUTOUT,Display.DMX.3,
-Uno, Digital, D7,OUTOUT,Display.DMX.2,
-Uno, Digital, D6,OUTOUT,Display.DMX.1,
+Uno, Digital, D13,,,
+Uno, Digital, D12,,,
+Uno, Digital, D11,OUTOUT,lcdA.D7,
+Uno, Digital, D10,OUTOUT,lcdA.D6,
+Uno, Digital, D9,OUTOUT,lcdA.D5,
+Uno, Digital, D8,OUTOUT,lcdA.D4,
+Uno, Digital, D7,OUTOUT,lcdA.E,
+Uno, Digital, D6,OUTOUT,lcdA.RS,
 Uno, Digital, D5,INPUT Pullup,ButtonAMDown,
 Uno, Digital, D4,INPUT Pullup,ButtonAMUp,
 Uno, Digital, D3,INPUT Pullup,ButtonAudioMode,
@@ -30,6 +30,15 @@ Uno, Analog, A2, ,,
 Uno, Analog, A3, ,,
 Uno, Analog, A4,SCL ,internalSCL,
 Uno, Analog, A5,SDA ,internalSDA,
+,,,,,
+Expander@UNO,Digital,P0,INPUT Pullup,lcdA.Btn1,Up
+Expander@UNO,Digital,P1,INPUT Pullup,lcdA.Btn2,Down
+Expander@UNO,Digital,P2,INPUT Pullup,lcdA.Btn3,Enter
+Expander@UNO,Digital,P3,INPUT Pullup,lcdA.Btn4,Return
+Expander@UNO,Digital,P4,INPUT Pullup,lcdB.Btn1,Up
+Expander@UNO,Digital,P5,INPUT Pullup,lcdB.Btn2,Down
+Expander@UNO,Digital,P6,INPUT Pullup,lcdB.Btn3,Enter
+Expander@UNO,Digital,P7,INPUT Pullup,lcdB.Btn4,Return
 ,,,,,
 MEGA1, Communication, SCL, SCL, SCLBank,
 MEGA1, Communication, SDA, SDA, SDABank,
