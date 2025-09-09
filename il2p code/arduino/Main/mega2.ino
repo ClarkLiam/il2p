@@ -7,6 +7,7 @@
 const int SLAVE_UNO = 1;
 const int SLAVE_Mega1 = 2;
 const int SLAVE_Mega2 = 3;
+const int SLAVE_Display = 4;
 
 /*Definations*/
     /*Pins*/

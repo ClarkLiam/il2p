@@ -7,11 +7,12 @@
 const int SLAVE_UNO = 1;
 const int SLAVE_Mega1 = 2;
 const int SLAVE_Mega2 = 3;
+const int SLAVE_Display = 4;
 
 #include <MIDI.h>
 MIDI_CREATE_DEFAULT_INSTANCE();
 
-/*Definations*/
+/*Definitions*/
 #define GrandMaster A0
 
 #define DBO 2
