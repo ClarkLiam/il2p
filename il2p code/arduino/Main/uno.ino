@@ -255,23 +255,22 @@ MIDI_CREATE_DEFAULT_INSTANCE();
     };
     data_SubmasterB megabsubmaster;
 
-    union unodataA
+    union data_unodataA
     {
     struct
     {
-        int Fader1;
-        int Fader2;
-        int Fader3;
-        int Fader4;
-        int Fader5;
-        int Fader6;
-
-        int Fader13;
-        int Fader14;
-        int Fader15;
-        int Fader16;
-        int Fader17;
-        int Fader18;
+        int fader1;
+        int fader2;
+        int fader3;
+        int fader4;
+        int fader5;
+        int fader6;
+        int fader13;
+        int fader14;
+        int fader15;
+        int fader16;
+        int fader17;
+        int fader18;
 
         int MidiStatus;
         int ConsoleStatus;
@@ -281,29 +280,29 @@ MIDI_CREATE_DEFAULT_INSTANCE();
     };
     data_unodataA unodataA;
 
-    union unodataB
+    union data_unodataB
     {
     struct
     {
-        int Fader7;
-        int Fader8;
-        int Fader9;
-        int Fader10;
-        int Fader11;
-        int Fader12;
+        int fader7;
+        int fader8;
+        int fader9;
+        int fader10;
+        int fader11;
+        int fader12;
 
-        int Fader19;
-        int Fader20;
-        int Fader21;
-        int Fader22;
-        int Fader23;
-        int Fader24;
+        int fader19;
+        int fader20;
+        int fader21;
+        int fader22;
+        int fader23;
+        int fader24;
     };
     byte bytes[24];
     };
     data_unodataB unodataB;
 
-    union unodataC
+    union data_unodataC
     {
     struct
     {
@@ -416,61 +415,73 @@ void loop() {
         {
             MIDI.sendNoteOn(0, megaafader.midif1, 2);
             lastfader1 = megaafader.midif1;
+            unodataA.fader1 = megaafader.midif1;
         }
         if(megaafader.midif2 != lastfader2)
         {
             MIDI.sendNoteOn(1, megaafader.midif2, 2);
             lastfader2 = megaafader.midif2;
+            unodataA.fader2 = megaafader.midif2;
         }
         if(megaafader.midif3 != lastfader3)
         {
             MIDI.sendNoteOn(2, megaafader.midif3, 2);
             lastfader3 = megaafader.midif3;
+            unodataA.fader3 = megaafader.midif3;
         }
         if(megaafader.midif4 != lastfader4)
         {
             MIDI.sendNoteOn(3, megaafader.midif4, 2);
             lastfader4 = megaafader.midif4;
+            unodataA.fader4 = megaafader.midif4;
         }
         if(megaafader.midif5 != lastfader5)
         {
             MIDI.sendNoteOn(4, megaafader.midif5, 2);
             lastfader5 = megaafader.midif5;
+            unodataA.fader5 = megaafader.midif5;
         }
         if(megaafader.midif6 != lastfader6)
         {
             MIDI.sendNoteOn(5, megaafader.midif6, 2);
             lastfader6 = megaafader.midif6;
+            unodataA.fader6 = megaafader.midif6;
         }
         if(megaafader.midif13 != lastfader13)
         {
             MIDI.sendNoteOn(12, megaafader.midif13, 2);
             lastfader13 = megaafader.midif13;
+            unodataA.fader13 = megaafader.midif13;
         }
         if(megaafader.midif14 != lastfader14)
         {
             MIDI.sendNoteOn(13, megaafader.midif14, 2);
             lastfader14 = megaafader.midif14;
+            unodataA.fader14 = megaafader.midif14;
         }
         if(megaafader.midif15 != lastfader15)
         {
             MIDI.sendNoteOn(14, megaafader.midif15, 2);
             lastfader15 = megaafader.midif15;
+            unodataA.fader15 = megaafader.midif15;
         }
         if(megaafader.midif16 != lastfader16)
         {
             MIDI.sendNoteOn(15, megaafader.midif16, 2);
             lastfader16 = megaafader.midif16;
+            unodataA.fader16 = megaafader.midif16;
         }
         if(megaafader.midif17 != lastfader17)
         {
             MIDI.sendNoteOn(16, megaafader.midif17, 2);
             lastfader17 = megaafader.midif17;
+            unodataA.fader17 = megaafader.midif17;
         }
         if(megaafader.midif18 != lastfader18)
         {
             MIDI.sendNoteOn(17, megaafader.midif18, 2);
             lastfader18 = megaafader.midif18;
+            unodataA.fader18 = megaafader.midif18;
         }
 
         /*MegaB*/
@@ -508,61 +519,73 @@ void loop() {
         {
             MIDI.sendNoteOn(6, megabfader.midif7, 2);
             lastfader7 = megabfader.midif7;
+            unodataB.fader7 = megabfader.midif7;
         }
         if(megabfader.midif8 != lastfader8)
         {
             MIDI.sendNoteOn(7, megabfader.midif8, 2);
             lastfader8 = megabfader.midif8;
+            unodataB.fader8 = megabfader.midif8;
         }
         if(megabfader.midif9 != lastfader9)
         {
             MIDI.sendNoteOn(8, megabfader.midif9, 2);
             lastfader9 = megabfader.midif9;
+            unodataB.fader9 = megabfader.midif9;
         }
         if(megabfader.midif10 != lastfader10)
         {
             MIDI.sendNoteOn(9, megabfader.midif10, 2);
             lastfader10 = megabfader.midif10;
+            unodataB.fader10 = megabfader.midif10;
         }
         if(megabfader.midif11 != lastfader11)
         {
             MIDI.sendNoteOn(10, megabfader.midif11, 2);
             lastfader11 = megabfader.midif11;
+            unodataB.fader11 = megabfader.midif11;
         }
         if(megabfader.midif12 != lastfader12)
         {
             MIDI.sendNoteOn(11, megabfader.midif12, 2);
             lastfader12 = megabfader.midif12;
+            unodataB.fader12 = megabfader.midif12;
         }
         if(megabfader.midif19 != lastfader19)
         {
             MIDI.sendNoteOn(18, megabfader.midif19, 2);
             lastfader19 = megabfader.midif19;
+            unodataB.fader19 = megabfader.midif19;
         }
         if(megabfader.midif20 != lastfader20)
         {
             MIDI.sendNoteOn(19, megabfader.midif20, 2);
             lastfader20 = megabfader.midif20;
+            unodataB.fader20 = megabfader.midif20;
         }
         if(megabfader.midif21 != lastfader21)
         {
             MIDI.sendNoteOn(20, megabfader.midif21, 2);
             lastfader21 = megabfader.midif21;
+            unodataB.fader21 = megabfader.midif21;
         }
         if(megabfader.midif22 != lastfader22)
         {
             MIDI.sendNoteOn(21, megabfader.midif22, 2);
             lastfader22 = megabfader.midif22;
+            unodataB.fader22 = megabfader.midif22;
         }
         if(megabfader.midif23 != lastfader23)
         {
             MIDI.sendNoteOn(22, megabfader.midif23, 2);
             lastfader23 = megabfader.midif23;
+            unodataB.fader23 = megabfader.midif23;
         }
         if(megabfader.midif24 != lastfader24)
         {
             MIDI.sendNoteOn(23, megabfader.midif24, 2);
             lastfader24 = megabfader.midif24;
+            unodataB.fader24 = megabfader.midif24;
         }
 
         /*Non Faderwing*/
@@ -625,41 +648,49 @@ void loop() {
         {
             MIDI.sendNoteOn(12, megaaother.midibflashmode, 3);
             lastbuttonFlashMode = megaaother.midibflashmode;
+            unodataC.BtnFlashMode = megaaother.midibflashmode;
         }
         if(megaaother.midiflashup != lastbuttonFlashUp)
         {
             MIDI.sendNoteOn(13, megaaother.midiflashup, 3);
             lastbuttonFlashUp = megaaother.midiflashup;
+            unodataC.BtnFlashUp = megaaother.midiflashup;
         }
         if(megaaother.midiflashdown != lastbuttonFlashDown)
         {
             MIDI.sendNoteOn(14, megaaother.midiflashdown, 3);
             lastbuttonFlashDown = megaaother.midiflashdown;
+            unodataC.BtnFlashDown = megaaother.midiflashdown;
         }
         if(megabother.midibChaserMode != lastbuttonChaserMode)
         {
             MIDI.sendNoteOn(15, megabother.midibChaserMode, 3);
             lastbuttonChaserMode = megabother.midibChaserMode;
+            unodataC.BtnChaserMode = megabother.midibChaserMode;
         }
         if(megabother.midibChaserModeUp != lastbuttonChaserModeUp)
         {
             MIDI.sendNoteOn(16, megabother.midibChaserModeUp, 3);
             lastbuttonChaserModeUp = megabother.midibChaserModeUp;
+            unodataC.BtnChaserModeUp = megabother.midibChaserModeUp;
         }
         if(megabother.midibChaserModeDown != lastbuttonChaserModeDown)
         {
             MIDI.sendNoteOn(17, megabother.midibChaserModeDown, 3);
             lastbuttonChaserModeDown = megabother.midibChaserModeDown;
+            unodataC.BtnChaserModeDown = megabother.midibChaserModeDown;
         }
         if(megabother.midibChaserModeStop != lastbuttonChaserModeStop)
         {
             MIDI.sendNoteOn(18, megabother.midibChaserModeStop, 3);
             lastbuttonChaserModeStop = megabother.midibChaserModeStop;
+            unodataC.BtnChaserModeStop = megabother.midibChaserModeStop;
         }
         if(megabother.midibChaserModeStart != lastbuttonChaserModeStart)
         {
             MIDI.sendNoteOn(19, megabother.midibChaserModeStart, 3);
             lastbuttonChaserModeStart = megabother.midibChaserModeStart;
+            unodataC.BtnChaserModeStart = megabother.midibChaserModeStart;
         }
         if(megabother.midibA != lastbuttonA)
         {
@@ -701,6 +732,7 @@ void loop() {
                 }
                 midibAudioMode = map(statebAudioMode, 0, 1, 0, 127);
                 lastbAudioMode = valbAudioMode;
+                unodataC.BtnAudioMode = midibAudioMode;
             }
             if(valbAMUp != lastbAMUp){
                 if(statebAMUp != 0){
@@ -710,6 +742,7 @@ void loop() {
                 }
                 midibAMUp = map(statebAMUp, 0, 1, 0, 127);
                 lastbAMUp = valbAMUp;
+                unodataC.BtnAMUp = midibAMUp;
             }
             if(valbAMDown != lastbAMDown){
                 if(statebAMDown != 0){
@@ -719,6 +752,7 @@ void loop() {
                 }
                 midibAMDown = map(statebAMDown, 0, 1, 0, 127);
                 lastbAMDown = valbAMDown;
+                unodataC.BtnAMDown = midibAMDown;
             }
 
         /*Read Faders*/
@@ -726,6 +760,7 @@ void loop() {
             if(valfGM != lastfGM){
                 midifGM = map(valfGM, 1023, 0, 0, 127);
                 lastfGM = valfGM;
+                unodataA.Master = midifGM;
             }
 
         /*Write Midi*/
@@ -749,6 +784,10 @@ void loop() {
             MIDI.sendNoteOn(3, midifGM, 0);
             lastfGM = midifGM;
         }
+
+        /*Write Status*/
+        unodataA.MidiStatus = 1;
+        unodataA.ConsoleStatus = 1;
 }
 
 
