@@ -670,7 +670,9 @@ void menuselect(int menu, int submenu){
         lcdA.print("Run Fader");
     }
     void run_programs(){
-        lcdA.print("Run Programs");
+        lcdA.print("Error");
+        lcdA.setCursor(0,1);
+        lcdA.print("no programs");
     }
 
     /*Menu Settings*/
