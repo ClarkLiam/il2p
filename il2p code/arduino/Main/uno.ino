@@ -123,6 +123,8 @@ MIDI_CREATE_DEFAULT_INSTANCE();
         int valfGM = 0;
         int lastfGM = 0;
         int midifGM = 0;
+    /*SendCount*/
+        int sendcount = 0;
 
 /*Unions*/
     union data_FaderA
@@ -253,11 +255,81 @@ MIDI_CREATE_DEFAULT_INSTANCE();
     };
     data_SubmasterB megabsubmaster;
 
+    union unodataA
+    {
+    struct
+    {
+        int Fader1;
+        int Fader2;
+        int Fader3;
+        int Fader4;
+        int Fader5;
+        int Fader6;
+
+        int Fader13;
+        int Fader14;
+        int Fader15;
+        int Fader16;
+        int Fader17;
+        int Fader18;
+
+        int MidiStatus;
+        int ConsoleStatus;
+        int Master;
+    };
+    byte bytes[30];
+    };
+    data_unodataA unodataA;
+
+    union unodataB
+    {
+    struct
+    {
+        int Fader7;
+        int Fader8;
+        int Fader9;
+        int Fader10;
+        int Fader11;
+        int Fader12;
+
+        int Fader19;
+        int Fader20;
+        int Fader21;
+        int Fader22;
+        int Fader23;
+        int Fader24;
+    };
+    byte bytes[24];
+    };
+    data_unodataB unodataB;
+
+    union unodataC
+    {
+    struct
+    {
+        int BtnFlashMode;
+        int BtnFlashUp;
+        int BtnFlashDown;
+
+        int BtnAudioMode;
+        int BtnAMUp;
+        int BtnAMDown;
+
+        int BtnChaserMode;
+        int BtnChaserModeUp;
+        int BtnChaserModeDown;
+        int BtnChaserModeStop;
+        int BtnChaserModeStart;
+    };
+    byte bytes[22];
+    };
+    data_unodataC unodataC;
 
 void setup() {
     /*Wire*/
         Wire.begin(); // Join I2C bus with address #1
         Wire.setClock(400000); // Set I2C clock speed to 400kHz
+        Wire.onRequest(sendData);
 
     /*MIDI*/
         MIDI.begin();
@@ -744,4 +816,25 @@ void getData2()
             }else{
                 Serial.println("Failed to receive data from Mega2");
     }}}
+}
+
+void sendData()
+{
+    if(sendcount == 0)
+    {
+        Wire.write(unodataA.bytes, sizeof(unodataA));
+        sendcount = 1;
+    }else{
+        if(sendcount == 1)
+        {
+            Wire.write(unodataB.bytes, sizeof(unodataB));
+            sendcount = 2;
+        }else{
+            if(sendcount == 2)
+            {
+                Wire.write(unodataC.bytes, sizeof(unodataC));
+                sendcount = 0;
+            }   
+        }
+    }
 }
