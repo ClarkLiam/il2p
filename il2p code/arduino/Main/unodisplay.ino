@@ -1,7 +1,7 @@
 /*Project: IL2P*/
 /*Device: UNO (display)*/
 /*Author: Liam Clark */
-/*Version: 1.0.4 pre-alpha*/
+/*Version: 1.1.0 pre-alpha*/
 
 #include <Wire.h>    
 const int SLAVE_UNO = 1;
@@ -30,6 +30,108 @@ LiquidCrystal_I2C lcdB(0x27, 16, 2);
 
     #define lcdBacklight 5  //dimmable backlight
 
+/*Custom Characters*/
+    byte nine[] = {
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111
+    };
+    byte zero[] = {
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000
+    };
+    byte stepone[] = {
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B11111
+    };
+    byte steptwo[] = {
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B11111,
+        B11111
+    };
+    byte stepthree[] = {
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B00000,
+        B11111,
+        B11111,
+        B11111
+    };
+    byte stepfour[] = {
+        B00000,
+        B00000,
+        B00000,
+        B00000, 
+        B11111,
+        B11111,
+        B11111,
+        B11111
+    };
+    byte stepfive[] = {
+        B00000,
+        B00000,
+        B00000,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111
+    };
+    byte stepsix[] = {
+        B00000,
+        B00000,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111
+    };
+    byte stepseven[] = {
+        B00000,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111
+    };
+    byte stepeight[] = {
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111,
+        B11111
+    };
+
 /*Variables*/
     /*Button States*/
     int vallcdABtn1 = 0;
@@ -54,6 +156,129 @@ LiquidCrystal_I2C lcdB(0x27, 16, 2);
     int menu = 0;
     int submenu = 0;
 
+    /*Status States*/
+    char *MidiStatusText[] = {"N/A", "OK"};
+    char *ConsoleStatusText[] = {"Error", "running"};
+
+/*Unions*/
+    union data_unodataA
+    {
+    struct
+    {
+        int Fader1;
+        int Fader2;
+        int Fader3;
+        int Fader4;
+        int Fader5;
+        int Fader6;
+
+        int Fader13;
+        int Fader14;
+        int Fader15;
+        int Fader16;
+        int Fader17;
+        int Fader18;
+
+        int MidiStatus;
+        int ConsoleStatus;
+        int Master;
+    };
+    byte bytes[30];
+    };
+    data_unodataA unodataA;
+
+    union data_unodataB
+    {
+    struct
+    {
+        int Fader7;
+        int Fader8;
+        int Fader9;
+        int Fader10;
+        int Fader11;
+        int Fader12;
+
+        int Fader19;
+        int Fader20;
+        int Fader21;
+        int Fader22;
+        int Fader23;
+        int Fader24;
+    };
+    byte bytes[24];
+    };
+    data_unodataB unodataB;
+
+    union data_unodataC
+    {
+    struct
+    {
+        int BtnFlashMode;
+        int BtnFlashUp;
+        int BtnFlashDown;
+
+        int BtnAudioMode;
+        int BtnAMUp;
+        int BtnAMDown;
+
+        int BtnChaserMode;
+        int BtnChaserModeUp;
+        int BtnChaserModeDown;
+        int BtnChaserModeStop;
+        int BtnChaserModeStart;
+    };
+    byte bytes[22];
+    };
+    data_unodataC unodataC;
+
+/*Startup*/
+void bootscreen(){
+    lcdA.clear();
+    lcdB.clear();
+    lcdA.print("illumination2PRO");
+    lcdB.print("start-up");
+    delay(650);
+    progressbar();
+    lcdA.print("il2p - Screen 1");
+    lcdB.print("il2p - Screen 2");
+    delay(1500);
+    lcdA.clear();
+    lcdB.clear();
+    lcdA.print("Welcome to");
+    lcdB.print("illumination2PRO");
+    delay(500);
+    lcdA.setCursor(0,1);
+    lcdA.print("version 1.0.5");
+    lcdB.setCursor(0,1);
+    lcdB.print("S/N: LS01859643");
+    delay(2000);
+    lcdA.clear();
+    lcdB.clear();
+    lcdA.print("Boot complete");
+    delay(1750);
+    lcdA.clear();
+    lcdB.print("Enjoy your show!");
+    lcdA.print("User: LS_Admin");
+    delay(2500);
+    lcdA.clear();
+    lcdB.clear();
+}
+
+void progressbar(){
+    for(int i = 0; i < 16; i++){
+        lcdA.setCursor(i,1);
+        lcdA.write(byte(9)); // Use the 'five' custom character for a filled block
+        delay(150);
+    }
+    for(int i = 0; i < 16; i++){
+        lcdB.setCursor(i,1);
+        lcdB.write(byte(9)); // Use the 'five' custom character for a filled block
+        delay(90);
+    }
+    delay(250);
+    lcdA.clear();
+    lcdB.clear();
+}
 
 void setup(){
     /*Wire*/
@@ -82,18 +307,57 @@ void setup(){
     lcdA.begin(16, 2);
     analogWrite(5, valBacklight);
 
+    lcdA.createChar(0, zero);
+    lcdA.createChar(1, stepone);
+    lcdA.createChar(2, steptwo);
+    lcdA.createChar(3, stepthree);
+    lcdA.createChar(4, stepfour);
+    lcdA.createChar(5, stepfive);
+    lcdA.createChar(6, stepsix);
+    lcdA.createChar(7, stepseven);
+    lcdA.createChar(8, stepeight);
+    lcdA.createChar(9, nine);
+
     lcdB.init();
     lcdB.backlight();
 
-    //move to a boot void/screen
-    lcdA.print("IL2P - Screen 1");
-    lcdB.print("IL2P - Screen 2");
-    delay(2000);
-    lcdA.clear();
-    lcdB.clear();
+    lcdB.createChar(0, zero);
+    lcdB.createChar(1, stepone);
+    lcdB.createChar(2, steptwo);
+    lcdB.createChar(3, stepthree);
+    lcdB.createChar(4, stepfour);
+    lcdB.createChar(5, stepfive);
+    lcdB.createChar(6, stepsix);
+    lcdB.createChar(7, stepseven);
+    lcdB.createChar(8, stepeight);
+    lcdB.createChar(9, nine);
+
+    delay(250);
+    bootscreen();
 }
 
 void loop(){
+    getData1();
+    Serial.println("UNODataA Received:");
+    for (int i = 0; i < sizeof(unodataA.bytes); i++) {
+        Serial.print(unodataA.bytes[i]);
+        Serial.print(" ");
+    }
+    Serial.println();
+    Serial.println("UNODataB Received:");
+    for (int i = 0; i < sizeof(unodataB.bytes); i++) {
+        Serial.print(unodataB.bytes[i]);
+        Serial.print(" ");
+    }
+    Serial.println();
+    Serial.println("UNODataC Received:");
+    for (int i = 0; i < sizeof(unodataC.bytes); i++) {
+        Serial.print(unodataC.bytes[i]);
+        Serial.print(" ");
+    }
+    Serial.println();
+
+    /*Read Expander Buttons*/
     vallcdABtn1 = pcf8574.digitalRead(lcdABtn1);    //up
     vallcdABtn2 = pcf8574.digitalRead(lcdABtn2);    //down
     vallcdBBtn1 = pcf8574.digitalRead(lcdBBtn1);    //up
@@ -101,7 +365,7 @@ void loop(){
     vallcdBBtn3 = pcf8574.digitalRead(lcdBBtn3);    //select
     vallcdBBtn4 = pcf8574.digitalRead(lcdBBtn4);    //menu
 
-    //Open Menu
+    /*Open Menu*/
     if(vallcdBBtn4 != lastlcdBBtn4){
         lastlcdBBtn4 = vallcdBBtn4;
         if(vallcdBBtn4 == LOW){
@@ -364,78 +628,176 @@ void menuselect(int menu, int submenu){
 
 }
 
-void run_overview(){
-    lcdA.print("Run Overview");
-}
-void run_wing(){
-    lcdA.print("Run Wing");
+/*Pages*/
+    /*Menu Run*/
+    void run_overview(){
+        lcdA.print("Run Overview");
+    }
+    void run_wing(){
+        lcdA.print("Wing  1-6");
+        lcdA.setCursor(0,1);
+        lcdA.print("A   13-18");
+        printFader(10,0,1,unodataA.Fader1);
+        printFader(10,1,13,unodataB.Fader7);
+        printFader(11,0,2,unodataA.Fader2);
+        printFader(11,1,14,unodataB.Fader8);
+        printFader(12,0,3,unodataA.Fader3);
+        printFader(12,1,15,unodataB.Fader9);
+        printFader(13,0,4,unodataA.Fader4);
+        printFader(13,1,16,unodataB.Fader10);
+        printFader(14,0,5,unodataA.Fader5);
+        printFader(14,1,17,unodataB.Fader11);
+        printFader(15,0,6,unodataA.Fader6);
+        printFader(15,1,18,unodataB.Fader12);
 
-}
-void run_fader(){
-    lcdA.print("Run Fader");
-}
-void run_programs(){
-    lcdA.print("Run Programs");
+        lcdB.print("Wing 7-12");
+        lcdB.setCursor(0,1);
+        lcdB.print("B   19-24");
+        printFader(10,0,7,unodataB.Fader7);
+        printFader(10,1,19,unodataB.Fader19);
+        printFader(11,0,8,unodataB.Fader8);
+        printFader(11,1,20,unodataB.Fader20);
+        printFader(12,0,9,unodataB.Fader9);
+        printFader(12,1,21,unodataB.Fader21);
+        printFader(13,0,10,unodataB.Fader10);
+        printFader(13,1,22,unodataB.Fader22);
+        printFader(14,0,11,unodataB.Fader11);
+        printFader(14,1,23,unodataB.Fader23);
+        printFader(15,0,12,unodataB.Fader12);
+        printFader(15,1,24,unodataB.Fader24);
+    }
+    void run_fader(){
+        lcdA.print("Run Fader");
+    }
+    void run_programs(){
+        lcdA.print("Run Programs");
+    }
+
+    /*Menu Settings*/
+    void settings_display(){
+        lcdA.print("il2p - Screen 1");
+        lcdB.print("il2p - Screen 2");
+        delay(50);
+        lcdA.clear();
+        lcdB.clear();
+        lcdA.print("Settings Display");
+        lcdB.print("Brightness: 80%");
+        lcdB.setCursor(0,1);
+        lcdB.print("Contrast: Auto");
+    }
+    void settings_fader(){
+        lcdA.print("Fader Settings");
+        lcdB.print(">Standard");
+        lcdB.setCursor(0,1);
+        lcdB.print(" Precise");
+    }
+    void settings_buttons(){
+        lcdA.print("Buttons Settings");
+        lcdB.print(">Standard");
+        lcdB.setCursor(0,1);
+        lcdB.print(" Precise");
+    }
+    void settings_modes(){
+        lcdA.print("Modes:");
+        lcdB.print(">Standard");
+        lcdB.setCursor(0,1);
+        lcdB.print(" Programmer");
+    }
+
+    /*Menu System*/
+    void system_overview(){
+        lcdA.print("System Overview");
+        lcdA.setCursor(0,1);
+        lcdA.print("iP: 127.0.0.1");
+        lcdB.print("Status:" );
+        lcdB.setCursor(8,0);
+        lcdB.print(ConsoleStatusText[unodataA.ConsoleStatus]);
+        lcdB.setCursor(0,1);
+        lcdB.print("Systems: running");
+    }
+    void system_dmx(){
+        lcdA.print("DMX Settings");
+        lcdB.print("Node1: N/A");
+        lcdB.setCursor(0,1);
+        lcdB.print("Node2: N/A");
+    }
+    void system_midi(){
+        lcdA.print("MIDI Settings");
+        lcdB.print("Host: pc-il2p");
+        lcdB.setCursor(0,1);
+        lcdB.print("Connection:");
+        lcdB.setCursor(11,1);
+        lcdB.print(MidiStatusText[unodataA.MidiStatus]);
+    }
+    void boardtest(){
+        lcdA.print("Board Test");
+    }
+
+    /*Menu Info*/
+    void screen_info(){
+        lcdA.print("illumination2PRO");
+        lcdA.setCursor(0,1);
+        lcdA.print("S/N: LS01859643");
+        lcdB.print("Version: 1.0.5");
+        lcdB.setCursor(0,1);
+        lcdB.print("Release: pre");
+    }
+
+/*Pages Systems*/
+void printFader(int posx, int posy, int fader, int value){
+    int bar = map(value, 0, 127, 0, 8);
+    if(posx < 16){
+        lcdA.setCursor(posx, posy);
+        lcdA.write(byte(bar));
+    }else{
+        posx = posx - 16;
+        lcdB.setCursor(posx, posy);
+        lcdB.write(byte(bar));
+    }
 }
 
-void settings_display(){
-    lcdA.print("il2p - Screen 1");
-    lcdB.print("il2p - Screen 2");
-    delay(50);
-    lcdA.clear();
-    lcdB.clear();
-    lcdA.print("Settings Display");
-    lcdB.print("Brightness: 80%");
-    lcdB.setCursor(0,1);
-    lcdB.print("Contrast: Auto");
+/*Communication*/
+void getData1()
+{
+    Wire.requestFrom(SLAVE_UNO, sizeof(unodataA));
+    if (Wire.available() == sizeof(unodataA)) {
+        Wire.readBytes(unodataA.bytes, sizeof(unodataA));
+    }else{
+        if(Wire.available() == sizeof(unodataB)) {
+        Wire.readBytes(unodataB.bytes, sizeof(unodataB));
+        }else{
+        if (Wire.available() == sizeof(unodataC)) {
+        Wire.readBytes(unodataC.bytes, sizeof(unodataC));
+        }else{
+            Serial.println("Failed to receive data from UNO");
+    }}
+    delay(100);
+    Wire.requestFrom(SLAVE_UNO, sizeof(unodataB));
+    if (Wire.available() == sizeof(unodataB)) {
+        Wire.readBytes(unodataB.bytes, sizeof(unodataB));
+    }else{
+        if (Wire.available() == sizeof(unodataA)) {
+        Wire.readBytes(unodataA.bytes, sizeof(unodataA));
+        }else{
+        if (Wire.available() == sizeof(unodataC)) {
+        Wire.readBytes(unodataC.bytes, sizeof(unodataC));
+        }else{
+            Serial.println("Failed to receive data from UNO");
+    }}
+    delay(100);
+    Wire.requestFrom(SLAVE_UNO, sizeof(unodataC));
+    if (Wire.available() == sizeof(unodataC)) {
+        Wire.readBytes(unodataC.bytes, sizeof(unodataC));
+    }else{
+        if (Wire.available() == sizeof(unodataA)) {
+        Wire.readBytes(unodataA.bytes, sizeof(unodataA));
+        }else{
+        if (Wire.available() == sizeof(unodataB)) {
+        Wire.readBytes(unodataB.bytes, sizeof(unodataB));
+        }else{
+            Serial.println("Failed to receive data from UNO");
+    }}
 }
-void settings_fader(){
-    lcdA.print("Fader Settings");
-    lcdB.print(">Standard");
-    lcdB.setCursor(0,1);
-    lcdB.print(" Precise");
-}
-void settings_buttons(){
-    lcdA.print("Buttons Settings");
-    lcdB.print(">Standard");
-    lcdB.setCursor(0,1);
-    lcdB.print(" Precise");
-}
-void settings_modes(){
-    lcdA.print("Modes:");
-    lcdB.print(">Standard");
-    lcdB.setCursor(0,1);
-    lcdB.print(" Programmer");
-}
-
-void system_overview(){
-    lcdA.print("System Overview");
-    lcdA.setCursor(0,1);
-    lcdA.print("iP: 127.0.0.1");
-    lcdB.print("Status: OK");
-    lcdB.setCursor(0,1);
-    lcdB.print("Systems: running");
-}
-void system_dmx(){
-    lcdA.print("DMX Settings");
-    lcdB.print("Node1: N/A");
-    lcdB.setCursor(0,1);
-    lcdB.print("Node2: N/A");
-}
-void system_midi(){
-    lcdA.print("MIDI Settings");
-    lcdB.print("Host: pc-il2p");
-    lcdB.setCursor(0,1);
-    lcdB.print("Connection: N/A");
-}
-void boardtest(){
-    lcdA.print("Board Test");
-}
-void screen_info(){
-    lcdA.print("illumination2PRO");
-    lcdA.setCursor(0,1);
-    lcdA.print("S/N: LS01859643");
-    lcdB.print("Version: 1.0.3");
-    lcdB.setCursor(0,1);
-    lcdB.print("Release: pre");
+    }
+    }
 }
