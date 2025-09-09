@@ -1,7 +1,7 @@
 /*Project: IL2P*/
 /*Device: UNO (display)*/
 /*Author: Liam Clark */
-/*Version: 1.1.0 pre-alpha*/
+/*Version: 1.1.2 pre-alpha*/
 
 #include <Wire.h>    
 const int SLAVE_UNO = 1;
