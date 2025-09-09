@@ -740,7 +740,7 @@ void menuselect(int menu, int submenu){
         lcdA.print("illumination2PRO");
         lcdA.setCursor(0,1);
         lcdA.print("S/N: LS01859643");
-        lcdB.print("Version: 1.0.5");
+        lcdB.print("Version: 1.1.2");
         lcdB.setCursor(0,1);
         lcdB.print("Release: pre");
     }
