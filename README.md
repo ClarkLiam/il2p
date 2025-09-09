@@ -12,8 +12,8 @@ Currently the following hardware is in use: 2x Arduino Mega (by Elegoo), 2x Ardu
 ## Current Versions:
 
   ### Firmeware Version:
-    UNO (midi):       1.8.3 pre-alpha 
-    UNO (displays):   1.0.3 pre-alpha
+    UNO (midi):       1.8.4 pre-alpha 
+    UNO (displays):   1.0.4 pre-alpha
     Mega (A):         1.8.3 pre-alpha
     Mega (B):         1.8.3 pre-alpha
 
