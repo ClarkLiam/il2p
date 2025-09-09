@@ -1,7 +1,7 @@
 /*Project: IL2P*/
 /*Device: UNO (main)*/
 /*Author: Liam Clark */
-/*Version: 1.8.3 pre-alpha*/
+/*Version: 1.8.4 pre-alpha*/
 
 #include <Wire.h>    
 const int SLAVE_UNO = 1;
@@ -20,11 +20,6 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 #define ButtonAudioMode 3
 #define ButtonAMUp 4
 #define ButtonAMDown 5
-
-#define Display_DMX1 6
-#define Display_DMX2 7
-#define Display_DMX3 8
-#define Display_DMX4 9
 
 /*Variables*/
     /*Buttons*/
@@ -276,11 +271,6 @@ void setup() {
         pinMode(ButtonAudioMode, INPUT_PULLUP);
         pinMode(ButtonAMUp, INPUT_PULLUP);
         pinMode(ButtonAMDown, INPUT_PULLUP);
-
-        pinMode(Display_DMX1, OUTPUT);
-        pinMode(Display_DMX2, OUTPUT);
-        pinMode(Display_DMX3, OUTPUT);
-        pinMode(Display_DMX4, OUTPUT);
 }
 
 void loop() {
