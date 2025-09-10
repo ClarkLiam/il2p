@@ -326,7 +326,7 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 
 void setup() {
     /*Wire*/
-        Wire.begin(); // Join I2C bus with address #1
+        Wire.begin(1); // Join I2C bus with address #1
         Wire.setClock(400000); // Set I2C clock speed to 400kHz
         Wire.onRequest(sendData);
 
