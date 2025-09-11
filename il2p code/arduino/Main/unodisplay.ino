@@ -246,6 +246,8 @@ void bootscreen(){
     lcdB.clear();
     lcdA.print("Welcome to");
     lcdB.print("illumination2PRO");
+    lcdA.setCursor(0,1);
+    lcdA.print(by LS Visuals);
     delay(500);
     lcdA.setCursor(0,1);
     lcdA.print("version 1.1.2");
