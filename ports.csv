@@ -1,9 +1,14 @@
 Deveice, PortType, PortName, PortMode, Connected to, Comments
-PSU,Mains,Phase (P),,230V,
-PSU,Mains,Neutral (N),,230V,
+PSU,Mains,Phase (P),,Pannel.pwr_in.kalt,
+PSU,Mains,Neutral (N),,Pannel.pwr_in.kalt,
 PSU,Output,GND,,GND Distribution,
 PSU,Output,+5V,,5V Distribution,
 PSU,Output,+12V,,12V Distribution,
+,,,,,
+Panel,PWR IN,Kalt,,PSU,
+Panel,DMX,Universe1,,,???
+Panel,DMX,Universe2,,,???
+Panel,USB,MIDI,,,attention needed
 ,,,,,
 Uno Master, Communication, SCL, SCL, SCLBank, 
 Uno Master, Communication, SDA, SDA, SDABank,
