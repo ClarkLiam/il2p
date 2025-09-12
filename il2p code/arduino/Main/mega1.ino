@@ -1,13 +1,14 @@
-/*Project: IL2P*/
+/*Project: illumination2PRO*/
 /*Device: Mega (1)*/
 /*Author: Liam Clark */
-/*Version: 1.8.3 pre-alpha*/
+/*Version: 2.0.1 pre-alpha*/
 
-#include <Wire.h>    
-const int SLAVE_UNO = 1;
-const int SLAVE_Mega1 = 2;
-const int SLAVE_Mega2 = 3;
-const int SLAVE_Display = 4;
+/*Wire & I2C_Address*/
+    #include <Wire.h>    
+    const int SLAVE_UNO = 1;
+    const int SLAVE_Mega1 = 2;
+    const int SLAVE_Mega2 = 3;
+    const int SLAVE_Display = 4;
 
 /*Definations*/
     /*Pins*/
@@ -83,6 +84,7 @@ const int SLAVE_Display = 4;
     int statebflashup = 0;
     int statebflashdown = 0;
 
+    /*Button Values*/
     int valb1 = 0;
     int valb2 = 0;
     int valb3 = 0;
@@ -101,6 +103,7 @@ const int SLAVE_Display = 4;
     int valbflashup = 0;
     int valbflashdown = 0;
 
+    /*Last Button States*/
     int lastb1 = 0;
     int lastb2 = 0;
     int lastb3 = 0;
@@ -138,6 +141,7 @@ const int SLAVE_Display = 4;
     int valfspeed = 0;
 
 
+    /*Last Fader Values*/
     int lastf1 = 0;
     int lastf2 = 0;
     int lastf3 = 0;
@@ -239,7 +243,7 @@ void setup()
         Serial.begin(115200);
     /*Wire*/
         Wire.begin(SLAVE_Mega1);    // Join I2C bus with address #2
-        Wire.setClock(400000); // Set I2C clock speed to 400kHz
+        Wire.setClock(400000);      // Set I2C clock speed to 400kHz
         Wire.onRequest(sendData);
 
     /*pinMode*/
@@ -275,9 +279,9 @@ void setup()
         pinMode(ledfader17, OUTPUT);
         pinMode(ledfader18, OUTPUT);
 
-        /*Union Management*/
-            megaafader.typeFader = 1;
-            megaaother.typeOther = 2;
+    /*Union Management*/
+        megaafader.typeFader = 1;
+        megaaother.typeOther = 2;
 }
 
 void loop()
@@ -427,7 +431,6 @@ void loop()
 
         
     /*Read Faders*/
-
         valf1 = analogRead(fader1);
         if(valf1 != lastf1){
             megaafader.midif1 = map(valf1, 1023, 0, 0, 127);
@@ -501,6 +504,7 @@ void loop()
             analogWrite(ledfader18, megaafader.midif18 / 4);
             lastf18 = valf18;
         }
+
         valffade = analogRead(faderfade);
         if(valffade != lastffade){
             megaafader.midiffade = map(valffade, 1023, 0, 0, 127);
@@ -523,9 +527,4 @@ void sendData()
         Wire.write(megaaother.bytes, sizeof(megaaother));
         sendcount = 0;
     }
-}
-
-void getData()
-{
-
 }
