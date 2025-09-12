@@ -1,13 +1,14 @@
-/*Project: IL2P*/
+/*Project: illumination2PRO*/
 /*Device: Mega (2)*/
 /*Author: Liam Clark */
-/*Version: 1.8.3 pre-alpha*/
+/*Version: 2.0.2 alpha*/
 
-#include <Wire.h>    
-const int SLAVE_UNO = 1;
-const int SLAVE_Mega1 = 2;
-const int SLAVE_Mega2 = 3;
-const int SLAVE_Display = 4;
+/*Wire & I2C_Address*/
+    #include <Wire.h>    
+    const int SLAVE_UNO = 1;
+    const int SLAVE_Mega1 = 2;
+    const int SLAVE_Mega2 = 3;
+    const int SLAVE_Display = 4;
 
 /*Definations*/
     /*Pins*/
@@ -85,7 +86,7 @@ const int SLAVE_Display = 4;
     int statebChaserModeStop = 0;
     int statebChaserModeGo = 0;
 
-
+    /*Button Values*/
     int valb7 = 0;
     int valb8 = 0;
     int valb9 = 0;
@@ -104,7 +105,7 @@ const int SLAVE_Display = 4;
     int valbChaserModeStop = 0;
     int valbChaserModeGo = 0;
 
-
+    /*Last Button States*/
     int lastb7 = 0;
     int lastb8 = 0;
     int lastb9 = 0;
@@ -143,6 +144,7 @@ const int SLAVE_Display = 4;
     int valfSequencer = 0;
     int valfAux = 0;
 
+    /*Last Fader Values*/
     int lastf7 = 0;
     int lastf8 = 0;
     int lastf9 = 0;
@@ -255,8 +257,8 @@ void setup()
     /*Serial*/
         Serial.begin(115200);
     /*Wire*/
-        Wire.begin(SLAVE_Mega2);    // Join I2C bus with address #2
-        Wire.setClock(400000); // Set I2C clock speed to 400kHz
+        Wire.begin(SLAVE_Mega2);    // Join I2C bus with address #3
+        Wire.setClock(400000);      // Set I2C clock speed to 400kHz
         Wire.onRequest(sendData);
 
     /*pinMode*/
@@ -292,10 +294,10 @@ void setup()
         pinMode(ledfader23, OUTPUT);
         pinMode(ledfader24, OUTPUT);
 
-        /*Union Management*/
-            megabfader.typeFader = 1;
-            megabother.typeOther = 2;
-            megaabsubmaster.typeSubmaster = 3;
+    /*Union Management*/
+        megabfader.typeFader = 1;
+        megabother.typeOther = 2;
+        megabsubmaster.typeSubmaster = 3;
 }
 
 void loop()
@@ -541,12 +543,12 @@ void loop()
         }
         valfSequencer = analogRead(faderSequencer);
         if(valfSequencer != lastfSequencer){
-            megabsubmaster.midifSequencer = map(valfSequencer, 1023, 0, 0, 127);
+            megabother.midibSequencer = map(valfSequencer, 1023, 0, 0, 127);
             lastfSequencer = valfSequencer;
         }
         valfAux = analogRead(faderAux);
         if(valfAux != lastfAux){
-            megabsubmaster.midifAux = map(valfAux, 1023, 0, 0, 127);
+            megabother.midibAux = map(valfAux, 1023, 0, 0, 127);
             lastfAux = valfAux;
         }
 
@@ -571,9 +573,4 @@ void sendData()
             }
         }
     }
-}
-
-void getData()
-{
-
 }
