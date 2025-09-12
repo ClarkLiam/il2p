@@ -1,7 +1,7 @@
 /*Project: illumination2PRO*/
 /*Device: Mega (1)*/
 /*Author: Liam Clark */
-/*Version: 2.0.1 pre-alpha*/
+/*Version: 2.0.2 alpha*/
 
 /*Wire & I2C_Address*/
     #include <Wire.h>    
