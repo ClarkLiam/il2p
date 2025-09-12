@@ -154,6 +154,78 @@ LiquidCrystal lcdB(8,9,10,11,12,13);
     char *ConsoleStatusText[] = {"Error", "running"};
 
 /*Unions*/
+    /*Unions Last*/
+    union data_lastdataA
+    {
+    struct
+    {
+        int Fader1;
+        int Fader2;
+        int Fader3;
+        int Fader4;
+        int Fader5;
+        int Fader6;
+
+        int Fader13;
+        int Fader14;
+        int Fader15;
+        int Fader16;
+        int Fader17;
+        int Fader18;
+
+        int MidiStatus;
+        int ConsoleStatus;
+        int Master;
+    };
+    byte bytes[30];
+    };
+    data_lastdataA lastdataA;
+
+    union data_lastdataB
+    {
+    struct
+    {
+        int Fader7;
+        int Fader8;
+        int Fader9;
+        int Fader10;
+        int Fader11;
+        int Fader12;
+
+        int Fader19;
+        int Fader20;
+        int Fader21;
+        int Fader22;
+        int Fader23;
+        int Fader24;
+    };
+    byte bytes[24];
+    };
+    data_lastdataB lastdataB;
+
+    union data_lastdataC
+    {
+    struct
+    {
+        int BtnFlashMode;
+        int BtnFlashUp;
+        int BtnFlashDown;
+
+        int BtnAudioMode;
+        int BtnAMUp;
+        int BtnAMDown;
+
+        int BtnChaserMode;
+        int BtnChaserModeUp;
+        int BtnChaserModeDown;
+        int BtnChaserModeStop;
+        int BtnChaserModeStart;
+    };
+    byte bytes[22];
+    };
+    data_lastdataC lastdataC;
+
+    /*Union Live*/
     union data_unodataA
     {
     struct
@@ -368,6 +440,8 @@ void loop(){
             lcdA.print("Menu:");
             lcdB.print("Submenu:");
             delay(500);
+            lcdA.clear();
+            lcdB.clear();
             mainmenu(menu, submenu);
         }
     }
@@ -375,7 +449,23 @@ void loop(){
         buttons();
         delay(150);
     }
-    menuselect(menu, submenu);
+    if(lastdataA.bytes != unodataA.bytes || lastdataB.bytes != unodataB.bytes || lastdataC.bytes != unodataC.bytes){
+        for(int i = 0; i < sizeof(unodataA.bytes)/2; i++){
+            if(lastdataA.bytes[i] != unodataA.bytes[i]){
+                lastdataA.bytes[i] = unodataA.bytes[i];
+            }
+        }
+        for(int i = 0; i < sizeof(unodataB.bytes)/2; i++){
+            if(lastdataB.bytes[i] != unodataB.bytes[i]){
+                lastdataB.bytes[i] = unodataB.bytes[i];
+            }
+        }
+        for(int i = 0; i < sizeof(unodataC.bytes)/2; i++){
+            if(lastdataC.bytes[i] != unodataC.bytes[i]){
+                lastdataC.bytes[i] = unodataC.bytes[i];
+            }
+        }
+    }
 }
 
 /* Menu Options
@@ -445,6 +535,8 @@ void buttons(){
     if(vallcdBBtn3 != lastlcdBBtn3){
         lastlcdBBtn3 = vallcdBBtn3;
         if(vallcdBBtn3 == LOW){
+            lcdA.clear();
+            lcdB.clear();
             menuselect(menu, submenu);
         }
     }
@@ -625,13 +717,12 @@ void menuselect(int menu, int submenu){
 /*Pages*/
     /*Menu Run*/
     void run_overview(){
-        getData1();
-        lcdA.print("Run Overview");
+        lcdA.print("Overview");
     }
     void run_wing(){
-        lcdA.print("Wing  1-6");
+        lcdA.print("Wing  1-6 ");
         lcdA.setCursor(0,1);
-        lcdA.print("A   13-18");
+        lcdA.print("A   13-18 ");
         printFader(10,0,1,unodataA.Fader1);
         printFader(10,1,13,unodataB.Fader7);
         printFader(11,0,2,unodataA.Fader2);
@@ -645,9 +736,9 @@ void menuselect(int menu, int submenu){
         printFader(15,0,6,unodataA.Fader6);
         printFader(15,1,18,unodataB.Fader12);
 
-        lcdB.print("Wing 7-12");
+        lcdB.print("Wing 7-12 ");
         lcdB.setCursor(0,1);
-        lcdB.print("B   19-24");
+        lcdB.print("B   19-24 ");
         printFader(10,0,7,unodataB.Fader7);
         printFader(10,1,19,unodataB.Fader19);
         printFader(11,0,8,unodataB.Fader8);
@@ -663,11 +754,9 @@ void menuselect(int menu, int submenu){
         
     }
     void run_fader(){
-        getData1();
         lcdA.print("Run Fader");
     }
     void run_programs(){
-        getData1();
         lcdA.print("Error");
         lcdA.setCursor(0,1);
         lcdA.print("no programs");
@@ -675,8 +764,8 @@ void menuselect(int menu, int submenu){
 
     /*Menu Settings*/
     void settings_display(){
-        lcdA.print("il2p - Screen 1");
-        lcdB.print("il2p - Screen 2");
+        lcdA.print("il2p - Screen 1 ");
+        lcdB.print("il2p - Screen 2 ");
         delay(50);
         lcdA.clear();
         lcdB.clear();
@@ -706,25 +795,22 @@ void menuselect(int menu, int submenu){
 
     /*Menu System*/
     void system_overview(){
-        getData1();
-        lcdA.print("System Overview");
+        lcdA.print("System Overview ");
         lcdA.setCursor(0,1);
-        lcdA.print("iP: 127.0.0.1");
-        lcdB.print("Status:" );
+        lcdA.print("iP: 127.0.0.1   ");
+        lcdB.print("Status: ");
         lcdB.setCursor(8,0);
         lcdB.print(ConsoleStatusText[unodataA.ConsoleStatus]);
         lcdB.setCursor(0,1);
         lcdB.print("Systems: running");
     }
     void system_dmx(){
-        getData1();
         lcdA.print("DMX Settings");
         lcdB.print("Node1: N/A");
         lcdB.setCursor(0,1);
         lcdB.print("Node2: N/A");
     }
     void system_midi(){
-        getData1();
         lcdA.print("MIDI Settings");
         lcdB.print("Host: pc-il2p");
         lcdB.setCursor(0,1);
@@ -733,7 +819,6 @@ void menuselect(int menu, int submenu){
         lcdB.print(MidiStatusText[unodataA.MidiStatus]);
     }
     void boardtest(){
-        getData1();
         lcdA.print("Board Test");
     }
 
@@ -805,3 +890,4 @@ void getData1()
     }
     }
 }
+
