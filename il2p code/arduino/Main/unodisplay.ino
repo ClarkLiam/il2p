@@ -1,7 +1,7 @@
 /*Project: IL2P*/
 /*Device: UNO (display)*/
 /*Author: Liam Clark */
-/*Version: 1.1.0 pre-alpha*/
+/*Version: 1.1.2 pre-alpha*/ //2 versions in the code please update both
 
 #include <Wire.h>    
 const int SLAVE_UNO = 1;
@@ -246,9 +246,11 @@ void bootscreen(){
     lcdB.clear();
     lcdA.print("Welcome to");
     lcdB.print("illumination2PRO");
+    lcdA.setCursor(0,1);
+    lcdA.print(by LS Visuals);
     delay(500);
     lcdA.setCursor(0,1);
-    lcdA.print("version 1.0.5");
+    lcdA.print("version 1.1.2");
     lcdB.setCursor(0,1);
     lcdB.print("S/N: LS01859643");
     delay(2000);
@@ -282,7 +284,7 @@ void progressbar(){
 
 void setup(){
     /*Wire*/
-        Wire.begin(); // Join I2C bus with address #1
+        Wire.begin(4); // Join I2C bus with address #4
         Wire.setClock(400000); // Set I2C clock speed to 400kHz
 
     /*Serial*/
@@ -382,6 +384,8 @@ void loop(){
         buttons();
         delay(150);
     }
+    menuselect(menu, submenu);
+    delay(150);
 }
 
 /* Menu Options
@@ -631,6 +635,7 @@ void menuselect(int menu, int submenu){
 /*Pages*/
     /*Menu Run*/
     void run_overview(){
+        getData1();
         lcdA.print("Run Overview");
     }
     void run_wing(){
@@ -665,12 +670,17 @@ void menuselect(int menu, int submenu){
         printFader(14,1,23,unodataB.Fader23);
         printFader(15,0,12,unodataB.Fader12);
         printFader(15,1,24,unodataB.Fader24);
+        
     }
     void run_fader(){
+        getData1();
         lcdA.print("Run Fader");
     }
     void run_programs(){
-        lcdA.print("Run Programs");
+        getData1();
+        lcdA.print("Error");
+        lcdA.setCursor(0,1);
+        lcdA.print("no programs");
     }
 
     /*Menu Settings*/
@@ -706,6 +716,7 @@ void menuselect(int menu, int submenu){
 
     /*Menu System*/
     void system_overview(){
+        getData1();
         lcdA.print("System Overview");
         lcdA.setCursor(0,1);
         lcdA.print("iP: 127.0.0.1");
@@ -716,12 +727,14 @@ void menuselect(int menu, int submenu){
         lcdB.print("Systems: running");
     }
     void system_dmx(){
+        getData1();
         lcdA.print("DMX Settings");
         lcdB.print("Node1: N/A");
         lcdB.setCursor(0,1);
         lcdB.print("Node2: N/A");
     }
     void system_midi(){
+        getData1();
         lcdA.print("MIDI Settings");
         lcdB.print("Host: pc-il2p");
         lcdB.setCursor(0,1);
@@ -730,6 +743,7 @@ void menuselect(int menu, int submenu){
         lcdB.print(MidiStatusText[unodataA.MidiStatus]);
     }
     void boardtest(){
+        getData1();
         lcdA.print("Board Test");
     }
 
@@ -738,7 +752,7 @@ void menuselect(int menu, int submenu){
         lcdA.print("illumination2PRO");
         lcdA.setCursor(0,1);
         lcdA.print("S/N: LS01859643");
-        lcdB.print("Version: 1.0.5");
+        lcdB.print("Version: 1.1.2");
         lcdB.setCursor(0,1);
         lcdB.print("Release: pre");
     }
