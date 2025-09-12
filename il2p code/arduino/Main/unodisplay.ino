@@ -1,7 +1,7 @@
 /*Project: IL2P*/
 /*Device: UNO (display)*/
 /*Author: Liam Clark */
-/*Version: 1.1.2 pre-alpha*/ //2 versions in the code please update both
+/*Version: 1.2.1 pre-alpha*/ //2 versions in the code please update both
 
 #include <Wire.h>    
 const int SLAVE_UNO = 1;
@@ -13,10 +13,8 @@ const int SLAVE_Display = 4;
 PCF8574 pcf8574(0x20);
 
 #include <LiquidCrystal.h>
-LiquidCrystal lcdA(6, 7, 8, 9, 10,11);
-
-#include <LiquidCrystal_I2C.h>
-LiquidCrystal_I2C lcdB(0x27, 16, 2);
+LiquidCrystal lcdA(2,3,4,5,6,7);
+LiquidCrystal lcdB(8,9,10,11,12,13);
 
 /*Definitions*/
     #define lcdABtn1 P0     //up (lcdA)
@@ -27,8 +25,6 @@ LiquidCrystal_I2C lcdB(0x27, 16, 2);
     #define lcdBBtn2 P5     //down (lcdB)
     #define lcdBBtn3 P6     //select
     #define lcdBBtn4 P7     //menu 
-
-    #define lcdBacklight 5  //dimmable backlight
 
 /*Custom Characters*/
     byte nine[] = {
@@ -148,9 +144,6 @@ LiquidCrystal_I2C lcdB(0x27, 16, 2);
     int lastlcdBBtn3 = 0;
     int lastlcdBBtn4 = 0;
 
-    /*Backlight State*/
-    int valBacklight = 175;
-
     /*Menu States*/
     int menustate = 0;
     int menu = 0;
@@ -247,10 +240,10 @@ void bootscreen(){
     lcdA.print("Welcome to");
     lcdB.print("illumination2PRO");
     lcdA.setCursor(0,1);
-    lcdA.print(by LS Visuals);
+    lcdA.print("by LS Visuals");
     delay(500);
     lcdA.setCursor(0,1);
-    lcdA.print("version 1.1.2");
+    lcdA.print("version 1.2.1");
     lcdB.setCursor(0,1);
     lcdB.print("S/N: LS01859643");
     delay(2000);
@@ -307,7 +300,6 @@ void setup(){
 
     /*LCDs*/
     lcdA.begin(16, 2);
-    analogWrite(5, valBacklight);
 
     lcdA.createChar(0, zero);
     lcdA.createChar(1, stepone);
@@ -320,8 +312,7 @@ void setup(){
     lcdA.createChar(8, stepeight);
     lcdA.createChar(9, nine);
 
-    lcdB.init();
-    lcdB.backlight();
+    lcdB.begin(16, 2);
 
     lcdB.createChar(0, zero);
     lcdB.createChar(1, stepone);
@@ -385,7 +376,6 @@ void loop(){
         delay(150);
     }
     menuselect(menu, submenu);
-    delay(150);
 }
 
 /* Menu Options
@@ -752,7 +742,7 @@ void menuselect(int menu, int submenu){
         lcdA.print("illumination2PRO");
         lcdA.setCursor(0,1);
         lcdA.print("S/N: LS01859643");
-        lcdB.print("Version: 1.1.2");
+        lcdB.print("Version: 1.2.1");
         lcdB.setCursor(0,1);
         lcdB.print("Release: pre");
     }
