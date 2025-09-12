@@ -1,7 +1,7 @@
 /*Project: IL2P*/
 /*Device: UNO (main)*/
 /*Author: Liam Clark */
-/*Version: 1.8.4 pre-alpha*/
+/*Version: 1.8.5 pre-alpha*/
 
 #include <Wire.h>    
 const int SLAVE_UNO = 1;
@@ -255,7 +255,7 @@ MIDI_CREATE_DEFAULT_INSTANCE();
     };
     data_SubmasterB megabsubmaster;
 
-    union unodataA
+    union data_unodataA
     {
     struct
     {
@@ -281,7 +281,7 @@ MIDI_CREATE_DEFAULT_INSTANCE();
     };
     data_unodataA unodataA;
 
-    union unodataB
+    union data_unodataB
     {
     struct
     {
@@ -303,7 +303,7 @@ MIDI_CREATE_DEFAULT_INSTANCE();
     };
     data_unodataB unodataB;
 
-    union unodataC
+    union data_unodataC
     {
     struct
     {
