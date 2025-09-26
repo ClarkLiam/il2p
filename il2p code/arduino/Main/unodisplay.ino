@@ -153,6 +153,8 @@ LiquidCrystal lcdB(8,9,10,11,12,13);
     char *MidiStatusText[] = {"N/A", "OK"};
     char *ConsoleStatusText[] = {"Error", "running"};
 
+    /*Screens*/
+
 /*Unions*/
     /*Unions Last*/
     union data_lastdataA
@@ -372,7 +374,6 @@ void setup(){
 
     /*LCDs*/
     lcdA.begin(16, 2);
-
     lcdA.createChar(0, zero);
     lcdA.createChar(1, stepone);
     lcdA.createChar(2, steptwo);
@@ -385,7 +386,6 @@ void setup(){
     lcdA.createChar(9, nine);
 
     lcdB.begin(16, 2);
-
     lcdB.createChar(0, zero);
     lcdB.createChar(1, stepone);
     lcdB.createChar(2, steptwo);
@@ -423,10 +423,10 @@ void loop(){
     Serial.println();
 
     /*Read Expander Buttons*/
-    vallcdABtn1 = pcf8574.digitalRead(lcdABtn1);    //up
-    vallcdABtn2 = pcf8574.digitalRead(lcdABtn2);    //down
-    vallcdBBtn1 = pcf8574.digitalRead(lcdBBtn1);    //up
-    vallcdBBtn2 = pcf8574.digitalRead(lcdBBtn2);    //down
+    vallcdABtn1 = pcf8574.digitalRead(lcdABtn1);    //up    @display1
+    vallcdABtn2 = pcf8574.digitalRead(lcdABtn2);    //down  @display2
+    vallcdBBtn1 = pcf8574.digitalRead(lcdBBtn1);    //up    @display2
+    vallcdBBtn2 = pcf8574.digitalRead(lcdBBtn2);    //down  @display2
     vallcdBBtn3 = pcf8574.digitalRead(lcdBBtn3);    //select
     vallcdBBtn4 = pcf8574.digitalRead(lcdBBtn4);    //menu
 
@@ -466,6 +466,7 @@ void loop(){
             }
         }
     }
+
 }
 
 /* Menu Options
@@ -751,7 +752,6 @@ void menuselect(int menu, int submenu){
         printFader(14,1,23,unodataB.Fader23);
         printFader(15,0,12,unodataB.Fader12);
         printFader(15,1,24,unodataB.Fader24);
-        
     }
     void run_fader(){
         lcdA.print("Run Fader");
@@ -839,7 +839,6 @@ void printFader(int posx, int posy, int fader, int value){
         lcdA.setCursor(posx, posy);
         lcdA.write(byte(bar));
     }else{
-        posx = posx - 16;
         lcdB.setCursor(posx, posy);
         lcdB.write(byte(bar));
     }
@@ -890,4 +889,3 @@ void getData1()
     }
     }
 }
-
