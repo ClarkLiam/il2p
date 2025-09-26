@@ -1,7 +1,7 @@
 /*Project: IL2P*/
 /*Device: UNO (display)*/
 /*Author: Liam Clark */
-/*Version: 1.2.1 pre-alpha*/ //2 versions in the code please update both
+/*Version: 1.2.3 pre-alpha*/ //2 versions in the code please update both
 
 #include <Wire.h>    
 const int SLAVE_UNO = 1;
@@ -317,7 +317,7 @@ void bootscreen(){
     lcdA.print("by LS Visuals");
     delay(500);
     lcdA.setCursor(0,1);
-    lcdA.print("version 1.2.1");
+    lcdA.print("version 1.2.3");
     lcdB.setCursor(0,1);
     lcdB.print("S/N: LS01859643");
     delay(2000);
@@ -827,7 +827,7 @@ void menuselect(int menu, int submenu){
         lcdA.print("illumination2PRO");
         lcdA.setCursor(0,1);
         lcdA.print("S/N: LS01859643");
-        lcdB.print("Version: 1.2.1");
+        lcdB.print("Version: 1.2.3");
         lcdB.setCursor(0,1);
         lcdB.print("Release: pre");
     }
