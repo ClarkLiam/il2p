@@ -299,7 +299,7 @@ LiquidCrystal lcdB(8,9,10,11,12,13);
     data_unodataC unodataC;
 
 /*Startup*/
-void bootscreen(){
+void bootscreen(){  //Animation & Startup Cycle
     lcdA.clear();
     lcdB.clear();
     lcdA.print("illumination2PRO");
@@ -333,7 +333,7 @@ void bootscreen(){
     lcdB.clear();
 }
 
-void progressbar(){
+void progressbar(){ //Progress Bar Animation
     for(int i = 0; i < 16; i++){
         lcdA.setCursor(i,1);
         lcdA.write(byte(9)); // Use the 'five' custom character for a filled block
@@ -358,7 +358,7 @@ void setup(){
     Serial.begin(115200);
 
     /*PCF8574*/
-    pcf8574.begin();
+    pcf8574.begin();    //Start up External Pins (address 0x20)
 
     /*pinMode*/
     pcf8574.pinMode(P0, INPUT_PULLUP);
@@ -369,8 +369,6 @@ void setup(){
     pcf8574.pinMode(P5, INPUT_PULLUP);
     pcf8574.pinMode(P6, INPUT_PULLUP);
     pcf8574.pinMode(P7, INPUT_PULLUP);
-
-    pinMode(5, OUTPUT);
 
     /*LCDs*/
     lcdA.begin(16, 2);
@@ -445,10 +443,13 @@ void loop(){
             mainmenu(menu, submenu);
         }
     }
+
     while(menustate > 0){
         buttons();
         delay(150);
     }
+
+    /*Update new values*/
     if(lastdataA.bytes != unodataA.bytes || lastdataB.bytes != unodataB.bytes || lastdataC.bytes != unodataC.bytes){
         for(int i = 0; i < sizeof(unodataA.bytes)/2; i++){
             if(lastdataA.bytes[i] != unodataA.bytes[i]){
