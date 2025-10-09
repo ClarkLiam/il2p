@@ -1,7 +1,7 @@
 # Illumination2PRO
 
 A Project to turn an old ETR Luna24 Lightingdesk into a modern custom build MIDI Lighting-Controller, using Arduino, cpp and python.
-I can recommend the open source software [Q Light Controller + (qlc+)](https://github.com/mcallegari/qlcplus)by [Massimo Callegari](https://github.com/mcallegari) (no ad, im just very happy with the software)
+I can recommend the open source software [Q Light Controller + (qlc+)](https://github.com/mcallegari/qlcplus) by [Massimo Callegari](https://github.com/mcallegari) (no ad, im just very happy with the software)
 
 This Repository contains the custom software for the controlling PC as well as the code and libraries for the arduino based systems.
 At some point there may also be custom 3D CAD and qlc+ files available.
