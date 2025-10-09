@@ -13,14 +13,14 @@ Currently the following hardware is in use: 2x Arduino Mega, 2x Arduino Uno
 ## Current Versions:
 
   ### Firmeware Version:
-    UNO (midi):       1.8.5 pre-alpha 
-    UNO (displays):   1.1.2 pre-alpha
-    Mega (A):         1.8.3 pre-alpha
-    Mega (B):         1.8.3 pre-alpha
+    UNO(master):      1.8.5 pre-alpha 
+    UNO(display):      1.1.2 pre-alpha
+    Mega(A):           1.8.3 pre-alpha
+    Mega(B):          1.8.3 pre-alpha
 
   ### OS-Version:
   
-    1.0 pre-alpha (based on Win10 Pro)
+    1.0 pre-alpha (based on Win11 Pro)
 
   ### WebOS Version:
   
@@ -28,16 +28,13 @@ Currently the following hardware is in use: 2x Arduino Mega, 2x Arduino Uno
 
   ### Library Versions:
 
-    DigitDisplay: 2.2.3 RTM
-    IlluminationDisplay: 1.0.2 RTM
+    DigitDisplay: 2.2.3 RTM (currently not needed)
+    IlluminationDisplay: 1.0.2 RTM (currently not needed) 
 
 > [!NOTE]
-> To replicate you must install the custom libraries (digitdisplay) as well as (IlluminationDisplay), which can be found in the files or in a seperate repository on my GitHub </br>
->[digitdisplay](https://github.com/ClarkLiam/digitdisplay)
-
 >Other libraries needed are:
->[Wire.h]
->[Midi.h]
+>[Wire.h]()
+>[Midi.h]()
 >[PCF8574.h](https://github.com/xreef/PCF8574_library)
 
 >[!TIP]
