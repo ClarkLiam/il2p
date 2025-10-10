@@ -473,9 +473,9 @@ void loop(){
 /* Menu Options
 Menu -> Run         ->Overview
                     ->Wing
-                    ->Fader
-                    ->Programs
-Menu -> Settings    ->Display
+                    ->Fader         -> Faders 1-24
+                    ->Programs      -> Programs
+Menu -> Settings    ->Display       
                     ->Fader
                     ->Buttons
                     ->Modes
@@ -719,7 +719,8 @@ void menuselect(int menu, int submenu){
 /*Pages*/
     /*Menu Run*/
     void run_overview(){
-        lcdA.print("Overview");
+        lcdA.print("Welcome to");
+        lcdB.print("illumination2PRO")
     }
     void run_wing(){
         lcdA.print("Wing  1-6 ");
@@ -821,6 +822,9 @@ void menuselect(int menu, int submenu){
     }
     void boardtest(){
         lcdA.print("Board Test");
+        lcdB.print("self-test not");
+        lcdB.setCursor(0,1);
+        lcdB.print("available");
     }
 
     /*Menu Info*/
@@ -885,8 +889,5 @@ void getData1()
         Wire.readBytes(unodataB.bytes, sizeof(unodataB));
         }else{
             Serial.println("Failed to receive data from UNO");
-    }}
-}
-    }
-    }
+    }}}}}
 }
