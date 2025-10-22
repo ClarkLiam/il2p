@@ -1,25 +1,58 @@
-on: ["push", "pull_request"]
+name: coverage test
 
-name: Test Coveralls
+on:
+  push:
+  pull_request:
 
 jobs:
-
-  build:
-    name: Build
+  coverage:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - uses: actions/checkout@v4
+      - name: Detect language
+        id: detect
+        run: |
+          lang=""
+          if [ -f package.json ]; then lang="node"; fi
+          if [ -f setup.py ] || [ -f pyproject.toml ] || [ -f requirements.txt ]; then
+            if [ -n "$lang" ]; then lang="$lang,python"; else lang="python"; fi
+          fi
+          echo "language=$lang" >> $GITHUB_OUTPUT
 
-    - name: Install Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
+      - name: Setup Node.js
+        if: contains(steps.detect.outputs.language, 'node')
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    - name: npm install, make test-coverage
-      run: |
-        npm install
-        make test-coverage
+      - name: Run Node.js tests and produce lcov
+        if: contains(steps.detect.outputs.language, 'node')
+        run: |
+          npm ci
+          # run tests under nyc to create coverage/lcov.info
+          npx nyc --reporter=lcov --report-dir=coverage npm test
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@v2
+      - name: Setup Python
+        if: contains(steps.detect.outputs.language, 'python')
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Python tests and produce lcov
+        if: contains(steps.detect.outputs.language, 'python')
+        run: |
+          # install requirements if present, then tools for coverage->lcov
+          if [ -f requirements.txt ]; then pip install -r requirements.txt || true; fi
+          pip install pytest pytest-cov coverage-lcov
+          coverage run -m pytest || true
+          mkdir -p coverage
+          coverage-lcov -o coverage/lcov.info
+
+      - name: Upload lcov to Coveralls
+        if: steps.detect.outputs.language != ''
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/lcov.info
