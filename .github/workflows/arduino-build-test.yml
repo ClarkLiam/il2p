@@ -1,0 +1,93 @@
+name: Arduino Build and Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    strategy:
+      matrix:
+        board:
+          - fqbn: "arduino:avr:uno"
+            name: "Arduino Uno"
+          - fqbn: "arduino:avr:mega"
+            name: "Arduino Mega"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Install Arduino AVR core
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+
+      - name: Install required libraries
+        run: |
+          # Install Wire library (built-in with AVR core)
+          # Install MIDI library
+          arduino-cli lib install MIDI
+          # Install PCF8574 library
+          arduino-cli lib install PCF8574
+
+      - name: Install custom library - il2pdisplay
+        run: |
+          mkdir -p ~/Arduino/libraries/il2pdisplay
+          cp -r "il2p code/arduino/libraries/il2pdisplay/"* \
+            ~/Arduino/libraries/il2pdisplay/
+
+      - name: Compile Arduino sketches - Main
+        run: |
+          echo "Compiling Main sketches for ${{ matrix.board.name }}..."
+          for sketch in "il2p code/arduino/Main"/*.ino; do
+            if [ -f "$sketch" ]; then
+              echo "Compiling: $sketch"
+              log_file="compile-$(basename "$sketch").log"
+              if arduino-cli compile --fqbn ${{ matrix.board.fqbn }} \
+                "$sketch" --verbose 2>&1 | tee "$log_file"; then
+                echo "✓ Successfully compiled: $sketch"
+              else
+                echo "✗ Failed to compile: $sketch"
+                cat "$log_file"
+                exit 1
+              fi
+            fi
+          done
+
+      - name: Compile Arduino sketches - Feature isolation files
+        run: |
+          echo "Compiling Feature isolation sketches for \
+            ${{ matrix.board.name }}..."
+          for sketch in \
+            "il2p code/arduino/feature isolation files"/*.ino; do
+            if [ -f "$sketch" ]; then
+              echo "Compiling: $sketch"
+              log_file="compile-$(basename "$sketch").log"
+              if arduino-cli compile --fqbn ${{ matrix.board.fqbn }} \
+                "$sketch" --verbose 2>&1 | tee "$log_file"; then
+                echo "✓ Successfully compiled: $sketch"
+              else
+                echo "✗ Failed to compile: $sketch"
+                cat "$log_file"
+                # Continue on error for feature isolation files
+              fi
+            fi
+          done
+        continue-on-error: true
+
+      - name: Upload compilation logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: compilation-logs-${{ matrix.board.name }}
+          path: "*.log"
+          retention-days: 7
