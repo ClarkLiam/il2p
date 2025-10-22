@@ -34,8 +34,8 @@ jobs:
       - name: Install required libraries
         run: |
           # Install Wire library (built-in with AVR core)
-          # Install MIDI library
-          arduino-cli lib install MIDI
+          # Install MIDI library from FortySevenEffects/arduino_midi_library
+          git clone https://github.com/FortySevenEffects/arduino_midi_library.git ~/Arduino/libraries/MIDI
           # Install PCF8574 library
           arduino-cli lib install PCF8574
 
