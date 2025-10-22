@@ -1,6 +1,0 @@
-on: ["push", "pull_request"]
-
-name: Test Coveralls Parallel
-
-- name: Coveralls GitHub Action
-  uses: coverallsapp/github-action@v2.3.6
