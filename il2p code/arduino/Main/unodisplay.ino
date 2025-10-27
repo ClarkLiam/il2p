@@ -720,7 +720,7 @@ void menuselect(int menu, int submenu){
     /*Menu Run*/
     void run_overview(){
         lcdA.print("Welcome to");
-        lcdB.print("illumination2PRO")
+        lcdB.print("illumination2PRO");
     }
     void run_wing(){
         lcdA.print("Wing  1-6 ");
